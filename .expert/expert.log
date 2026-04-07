@@ -1,0 +1,121 @@
+
+20:08:32.422 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:32.421 instance_id=19D6A31E365 [info] Opened file:///home/felipe/workspace/app/mix.lock
+
+20:08:32.422 instance_id=19D6A31E365 [debug] handled notification client -> server textDocument/didOpen in 14ms
+
+20:08:32.429 instance_id=19D6A31E365 [debug] handled notification client -> server $/cancelRequest in 6ms
+
+20:08:32.429 instance_id=19D6A31E365 [debug] handled notification client -> server $/cancelRequest in 113µs
+
+20:08:32.467 instance_id=19D6A31E365 [debug] handled notification client -> server $/cancelRequest in 112µs
+
+20:08:32.467 instance_id=19D6A31E365 [debug] handled notification client -> server $/cancelRequest in 134µs
+
+20:08:32.468 instance_id=19D6A31E365 [debug] handled notification client -> server $/cancelRequest in 136µs
+
+20:08:32.599 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:32.599 instance_id=19D6A31E365 [info] No formatter found in /home/felipe/workspace/app/.formatter.exs error was false
+
+20:08:32.601 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:32.600 instance_id=19D6A31E365 [info] found formatter in /home/felipe/workspace/app
+
+20:08:32.601 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:32.601 instance_id=19D6A31E365 [info] No formatter found in /home/felipe/workspace/app/.formatter.exs error was false
+
+20:08:32.602 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:32.601 instance_id=19D6A31E365 [info] found formatter in /home/felipe/workspace/app
+
+20:08:32.637 instance_id=19D6A31E365 [debug] handled request client -> server textDocument/codeLens in 12ms
+
+20:08:32.732 instance_id=19D6A31E365 [debug] handled notification client -> server $/cancelRequest in 183µs
+
+20:08:32.732 instance_id=19D6A31E365 [debug] handled notification client -> server $/cancelRequest in 96µs
+
+20:08:32.735 instance_id=19D6A31E365 [debug] handled notification client -> server textDocument/didClose in 3ms
+
+20:08:32.764 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:32.764 instance_id=19D6A31E365 [info] Opened file:///home/felipe/workspace/app/mix.exs
+
+20:08:32.764 instance_id=19D6A31E365 [debug] handled notification client -> server textDocument/didOpen in 868µs
+
+20:08:32.800 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:32.799 instance_id=19D6A31E365 [info] Resolved entity: {:call, Kernel, :defmodule, 2}
+
+20:08:32.825 instance_id=19D6A31E365 [debug] handled notification client -> server $/cancelRequest in 114µs
+
+20:08:32.868 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:32.868 instance_id=19D6A31E365 [info] Resolved entity: {:call, Kernel, :defmodule, 2}
+
+20:08:32.992 instance_id=19D6A31E365 [debug] handled request client -> server textDocument/documentSymbol in 227ms
+
+20:08:33.002 instance_id=19D6A31E365 [debug] handled request client -> server textDocument/codeLens in 4ms
+
+20:08:33.008 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:33.008 instance_id=19D6A31E365 [error] ** (ErlangError) Erlang error: {:exception, %File.Error{reason: :enoent, path: nil, action: "get current working directory"}, [{File, :cwd!, 0, [file: ~c"lib/file.ex", line: 1608]}, {XPEngine.Mix, :in_project, 2, [file: ~c"lib/engine/mix.ex", line: 16]}, {XPEngine.Search.Fuzzy, :build_filter_fn, 0, [file: ~c"lib/engine/search/fuzzy.ex", line: 343]}, {XPEngine.Search.Fuzzy, :new, 4, [file: ~c"lib/engine/search/fuzzy.ex", line: 79]}, {XPEngine.CodeAction.Handlers.AddAlias, :do_fuzzy_search, 1, [file: ~c"lib/engine/code_action/handlers/add_alias.ex", line: 202]}, {XPEngine.CodeAction.Handlers.AddAlias, :possible_aliases, 1, [file: ~c"lib/engine/code_action/handlers/add_alias.ex", line: 167]}, {XPEngine.CodeAction.Handlers.AddAlias, :actions, 3, [file: ~c"lib/engine/code_action/handlers/add_alias.ex", line: 31]}, {Enum, :flat_map_list, 2, [file: ~c"lib/enum.ex", line: 4442]}]}
+    (kernel 10.2.7.1) erpc.erl:1368: :erpc.call/5
+    (xp_expert 0.1.0) lib/expert/provider/handlers/code_action.ex:19: XPExpert.Provider.Handlers.CodeAction.handle/1
+    (xp_expert 0.1.0) lib/expert.ex:118: XPExpert.handle_request/2
+    (xp_gen_lsp 0.11.3) lib/gen_lsp.ex:390: anonymous fn/2 in XPGenLSP.loop/3
+    (xp_telemetry 1.3.0) /Users/runner/work/expert/expert/apps/expert/deps/telemetry/src/telemetry.erl:324: :xp_telemetry.span/3
+    (xp_gen_lsp 0.11.3) lib/gen_lsp.ex:389: anonymous fn/5 in XPGenLSP.loop/3
+    (xp_gen_lsp 0.11.3) lib/gen_lsp.ex:559: anonymous fn/4 in XPGenLSP.attempt/4
+    (elixir 1.17.3) lib/task/supervised.ex:101: Task.Supervised.invoke_mfa/2
+
+
+20:08:33.009 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:33.129 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:33.128 instance_id=19D6A31E365 [info] No formatter found in /home/felipe/workspace/app/.formatter.exs error was false
+
+20:08:33.129 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:33.129 instance_id=19D6A31E365 [info] found formatter in /home/felipe/workspace/app
+
+20:08:33.133 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:33.133 instance_id=19D6A31E365 [info] No formatter found in /home/felipe/workspace/app/.formatter.exs error was false
+
+20:08:33.133 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:33.133 instance_id=19D6A31E365 [info] found formatter in /home/felipe/workspace/app
+
+20:08:33.189 instance_id=19D6A31E365 [debug] handled request client -> server textDocument/documentSymbol in 125ms
+
+20:08:37.897 instance_id=19D6A31E365 [debug] handled notification client -> server $/cancelRequest in 591µs
+
+20:08:38.142 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:38.141 instance_id=19D6A31E365 [info] Resolved entity: {:variable, :aliases}
+
+20:08:38.201 instance_id=19D6A31E365 [debug] handled request client -> server textDocument/hover in 75ms
+
+20:08:39.034 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:39.033 instance_id=19D6A31E365 [info] Resolved entity: {:variable, :aliases}
+
+20:08:39.056 instance_id=19D6A31E365 [debug] handled notification client -> server $/cancelRequest in 606µs
+
+20:08:39.565 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:39.564 instance_id=19D6A31E365 [info] Resolved entity: {:variable, :aliases}
+
+20:08:39.576 instance_id=19D6A31E365 [debug] handled request client -> server textDocument/hover in 20ms
+
+20:08:39.867 instance_id=19D6A31E365 [debug] sent notification server -> client window/logMessage
+
+20:08:39.864 instance_id=19D6A31E365 [info] Resolved entity: {:variable, :aliases}
+
+20:08:39.900 instance_id=19D6A31E365 [debug] handled request client -> server textDocument/hover in 47ms
+
+20:08:40.698 instance_id=19D6A31E365 [debug] handled request client -> server textDocument/hover in 20ms
