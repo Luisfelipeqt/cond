@@ -40,6 +40,7 @@ defmodule App.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:argon2_elixir, "~> 4.0"},
       {:phoenix, "~> 1.8.5"},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.13"},
@@ -62,10 +63,16 @@ defmodule App.MixProject do
       {:req, "~> 0.5"},
       {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
-      {:gettext, "~> 1.0"},
+      {:gettext, "~> 0.26"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.2.0"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      # OTHER LIBS
+      {:uuidv7, "~> 1.0"},
+      {:timex, "~> 3.7"},
+      {:oban, "~> 2.20"},
+      {:money, "~> 1.13"},
+      {:brcpfcnpj, "~> 2.0"}
     ]
   end
 

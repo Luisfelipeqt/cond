@@ -7,6 +7,26 @@
 # General application configuration
 import Config
 
+config :app, App.Repo, migration_primary_key: [name: :id, type: :binary_id]
+
+config :money,
+  default_currency: :BRL,
+  separator: ".",
+  delimiter: ","
+
+config :app, :scopes,
+  user: [
+    default: true,
+    module: App.Accounts.Scope,
+    assign_key: :current_scope,
+    access_path: [:user, :id],
+    schema_key: :user_id,
+    schema_type: :binary_id,
+    schema_table: :users,
+    test_data_fixture: App.AccountsFixtures,
+    test_setup_helper: :register_and_log_in_user
+  ]
+
 config :app,
   ecto_repos: [App.Repo],
   generators: [timestamp_type: :utc_datetime]
