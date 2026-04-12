@@ -7,38 +7,53 @@ defmodule AppWeb.UserLive.Registration do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} current_scope={@current_scope}>
-      <div class="mx-auto max-w-sm">
-        <div class="text-center">
-          <.header>
-            Register for an account
-            <:subtitle>
-              Already registered?
-              <.link navigate={~p"/users/log-in"} class="font-semibold text-brand hover:underline">
-                Log in
-              </.link>
-              to your account now.
-            </:subtitle>
-          </.header>
-        </div>
+    <Layouts.flash_group flash={@flash} />
 
-        <.form for={@form} id="registration_form" phx-submit="save" phx-change="validate">
-          <.input
-            field={@form[:email]}
-            type="email"
-            label="Email"
-            autocomplete="username"
-            spellcheck="false"
-            required
-            phx-mounted={JS.focus()}
-          />
-
-          <.button phx-disable-with="Creating account..." class="btn btn-primary w-full">
-            Create an account
-          </.button>
-        </.form>
+    <div class="min-h-screen bg-base-200 flex flex-col items-center justify-center p-4">
+      <div class="mb-8 text-center">
+        <.link href={~p"/"} class="text-xl font-bold text-base-content tracking-tight">
+          síndico.app
+        </.link>
       </div>
-    </Layouts.app>
+
+      <div class="card bg-base-100 border border-base-300 w-full max-w-sm shadow-sm">
+        <div class="card-body gap-5 p-8">
+          <div class="text-center space-y-1">
+            <h1 class="text-xl font-bold text-base-content">Criar sua conta</h1>
+            <p class="text-sm text-base-content/60">
+              Já tem conta?
+              <.link navigate={~p"/users/log-in"} class="text-primary font-medium hover:underline">
+                Entrar
+              </.link>
+            </p>
+          </div>
+
+          <.form for={@form} id="registration_form" phx-submit="save" phx-change="validate">
+            <.input
+              field={@form[:email]}
+              type="email"
+              label="Email"
+              autocomplete="username"
+              spellcheck="false"
+              required
+              phx-mounted={JS.focus()}
+            />
+            <.button phx-disable-with="Criando conta..." class="btn btn-primary w-full mt-1">
+              Criar conta
+            </.button>
+          </.form>
+
+          <p class="text-xs text-center text-base-content/40">
+            Ao criar uma conta, você concorda com os nossos
+            <a href="#" class="underline hover:text-base-content transition-colors">termos de uso</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <Layouts.theme_toggle />
+      </div>
+    </div>
     """
   end
 

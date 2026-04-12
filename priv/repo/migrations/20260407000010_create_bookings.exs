@@ -2,9 +2,7 @@ defmodule App.Repo.Migrations.CreateBookings do
   use Ecto.Migration
 
   def change do
-    create table(:bookings,  prefix: "condo") do
-
-
+    create table(:bookings, prefix: "condo") do
       add :area_id,
           references(:common_areas, type: :binary_id, prefix: "condo"),
           null: false

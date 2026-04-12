@@ -2,9 +2,7 @@ defmodule App.Repo.Migrations.CreateSuppliers do
   use Ecto.Migration
 
   def change do
-    create table(:suppliers,  prefix: "quotation") do
-
-
+    create table(:suppliers, prefix: "quotation") do
       add :org_id,
           references(:organizations, type: :binary_id, prefix: "condo"),
           null: false

@@ -2,9 +2,7 @@ defmodule App.Repo.Migrations.CreateIncidents do
   use Ecto.Migration
 
   def change do
-    create table(:incidents,  prefix: "communication") do
-
-
+    create table(:incidents, prefix: "communication") do
       add :condo_id,
           references(:condominiums, type: :binary_id, prefix: "condo"),
           null: false

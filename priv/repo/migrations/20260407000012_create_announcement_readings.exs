@@ -2,9 +2,7 @@ defmodule App.Repo.Migrations.CreateAnnouncementReadings do
   use Ecto.Migration
 
   def change do
-    create table(:announcement_readings,  prefix: "communication") do
-
-
+    create table(:announcement_readings, prefix: "communication") do
       add :announcement_id,
           references(:announcements, type: :binary_id, prefix: "communication"),
           null: false

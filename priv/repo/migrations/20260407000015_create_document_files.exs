@@ -2,9 +2,7 @@ defmodule App.Repo.Migrations.CreateDocumentFiles do
   use Ecto.Migration
 
   def change do
-    create table(:document_files,  prefix: "documents") do
-
-
+    create table(:document_files, prefix: "documents") do
       add :document_id,
           references(:generated_documents, type: :binary_id, prefix: "documents"),
           null: false

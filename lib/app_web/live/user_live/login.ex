@@ -6,92 +6,101 @@ defmodule AppWeb.UserLive.Login do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} current_scope={@current_scope}>
-      <div class="mx-auto max-w-sm space-y-4">
-        <div class="text-center">
-          <.header>
-            <p>Log in</p>
-            <:subtitle>
-              <%= if @current_scope do %>
-                You need to reauthenticate to perform sensitive actions on your account.
-              <% else %>
-                Don't have an account? <.link
-                  navigate={~p"/users/register"}
-                  class="font-semibold text-brand hover:underline"
-                  phx-no-format
-                >Sign up</.link> for an account now.
-              <% end %>
-            </:subtitle>
-          </.header>
-        </div>
+    <Layouts.flash_group flash={@flash} />
 
-        <div :if={local_mail_adapter?()} class="alert alert-info">
-          <.icon name="hero-information-circle" class="size-6 shrink-0" />
-          <div>
-            <p>You are running the local mail adapter.</p>
-            <p>
-              To see sent emails, visit <.link href="/dev/mailbox" class="underline">the mailbox page</.link>.
+    <div class="min-h-screen bg-base-200 flex flex-col items-center justify-center p-4">
+      <div class="mb-8 text-center">
+        <.link href={~p"/"} class="text-xl font-bold text-base-content tracking-tight">
+          síndico.app
+        </.link>
+      </div>
+
+      <div class="card bg-base-100 border border-base-300 w-full max-w-sm shadow-sm">
+        <div class="card-body gap-5 p-8">
+          <div class="text-center space-y-1">
+            <h1 class="text-xl font-bold text-base-content">Entrar na sua conta</h1>
+            <p class="text-sm text-base-content/60">
+              <%= if @current_scope do %>
+                Confirme sua identidade para continuar.
+              <% else %>
+                Não tem conta?
+                <.link navigate={~p"/users/register"} class="text-primary font-medium hover:underline">
+                  Cadastre-se
+                </.link>
+              <% end %>
             </p>
           </div>
+
+          <div :if={local_mail_adapter?()} class="alert alert-info text-sm py-2">
+            <.icon name="hero-information-circle" class="size-4 shrink-0" />
+            <span>
+              Veja os emails em
+              <.link href="/dev/mailbox" class="underline">mailbox</.link>.
+            </span>
+          </div>
+
+          <.form
+            :let={f}
+            for={@form}
+            id="login_form_magic"
+            action={~p"/users/log-in"}
+            phx-submit="submit_magic"
+          >
+            <.input
+              readonly={!!@current_scope}
+              field={f[:email]}
+              type="email"
+              label="Email"
+              autocomplete="username"
+              spellcheck="false"
+              required
+              phx-mounted={JS.focus()}
+            />
+            <.button class="btn btn-primary w-full mt-1">
+              Entrar com link no email <span aria-hidden="true">→</span>
+            </.button>
+          </.form>
+
+          <div class="divider text-xs text-base-content/40">ou com senha</div>
+
+          <.form
+            :let={f}
+            for={@form}
+            id="login_form_password"
+            action={~p"/users/log-in"}
+            phx-submit="submit_password"
+            phx-trigger-action={@trigger_submit}
+          >
+            <.input
+              readonly={!!@current_scope}
+              field={f[:email]}
+              type="email"
+              label="Email"
+              autocomplete="username"
+              spellcheck="false"
+              required
+            />
+            <.input
+              field={@form[:password]}
+              type="password"
+              label="Senha"
+              autocomplete="current-password"
+              spellcheck="false"
+            />
+            <.button class="btn btn-primary w-full mt-1" name={@form[:remember_me].name} value="true">
+              Entrar e manter conectado <span aria-hidden="true">→</span>
+            </.button>
+            <.button class="btn btn-outline w-full mt-2">
+              Entrar apenas desta vez
+            </.button>
+          </.form>
         </div>
-
-        <.form
-          :let={f}
-          for={@form}
-          id="login_form_magic"
-          action={~p"/users/log-in"}
-          phx-submit="submit_magic"
-        >
-          <.input
-            readonly={!!@current_scope}
-            field={f[:email]}
-            type="email"
-            label="Email"
-            autocomplete="username"
-            spellcheck="false"
-            required
-            phx-mounted={JS.focus()}
-          />
-          <.button class="btn btn-primary w-full">
-            Log in with email <span aria-hidden="true">→</span>
-          </.button>
-        </.form>
-
-        <div class="divider">or</div>
-
-        <.form
-          :let={f}
-          for={@form}
-          id="login_form_password"
-          action={~p"/users/log-in"}
-          phx-submit="submit_password"
-          phx-trigger-action={@trigger_submit}
-        >
-          <.input
-            readonly={!!@current_scope}
-            field={f[:email]}
-            type="email"
-            label="Email"
-            autocomplete="username"
-            spellcheck="false"
-            required
-          />
-          <.input
-            field={@form[:password]}
-            type="password"
-            label="Password"
-            autocomplete="current-password"
-            spellcheck="false"
-          />
-          <.button class="btn btn-primary w-full" name={@form[:remember_me].name} value="true">
-            Log in and stay logged in <span aria-hidden="true">→</span>
-          </.button>
-          <.button class="btn btn-primary btn-soft w-full mt-2">
-            Log in only this time
-          </.button>
-        </.form>
       </div>
-    </Layouts.app>
+
+      <div class="mt-6">
+        <Layouts.theme_toggle />
+      </div>
+    </div>
     """
   end
 

@@ -2,9 +2,7 @@ defmodule App.Repo.Migrations.CreateAiJobs do
   use Ecto.Migration
 
   def change do
-    create table(:ai_jobs,  prefix: "documents") do
-
-
+    create table(:ai_jobs, prefix: "documents") do
       add :document_id,
           references(:generated_documents, type: :binary_id, prefix: "documents"),
           null: false

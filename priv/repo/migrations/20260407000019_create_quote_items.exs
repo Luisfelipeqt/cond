@@ -2,9 +2,7 @@ defmodule App.Repo.Migrations.CreateQuoteItems do
   use Ecto.Migration
 
   def change do
-    create table(:quote_items,  prefix: "quotation") do
-
-
+    create table(:quote_items, prefix: "quotation") do
       add :quote_request_id,
           references(:quote_requests, type: :binary_id, prefix: "quotation"),
           null: false

@@ -2,9 +2,7 @@ defmodule App.Repo.Migrations.CreateGeneratedDocuments do
   use Ecto.Migration
 
   def change do
-    create table(:generated_documents,  prefix: "documents") do
-
-
+    create table(:generated_documents, prefix: "documents") do
       add :condo_id,
           references(:condominiums, type: :binary_id, prefix: "condo"),
           null: false

@@ -228,3 +228,1569 @@ Last message: :timeout
 State: %XPEngine.Build.State{project: %XPForge.Project{root_uri: "file:///home/felipe/workspace/app", mix_exs_uri: "file:///home/felipe/workspace/app/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: App.MixProject, entropy: 20434}, build_number: 0, uri_to_document: %{"file:///home/felipe/workspace/app/mix.exs" => #XPForge.Document<path: "/home/felipe/workspace/app/mix.exs", version: 5, dirty?: true, lines: %Lines<"defmodule App.MixProject do..."(96 lines)>, ...>}, project_compile: :none}
 
 20:36:15.570 instance_id=19D6A31E365 [notice] Application xp_engine exited: shutdown
+
+22:15:57.639 instance_id=19D7A1BD0FE [info] Build path /home/felipe/workspace/app/.expert/build/erl-28/elixir-1.20 was compiled on a previous erlang version. Deleting
+
+22:15:58.113 instance_id=19D7A1BD0FE [info] Building app
+
+22:16:04.064 instance_id=19D7A1BD0FE [info] Loaded []
+
+22:21:05.249 instance_id=19D7A1BD0FE [info] Compile completed with status ok Produced 0 diagnostics []
+
+22:21:05.344 instance_id=19D7A1BD0FE [info] Plugins found 0 results in 0.056 ms
+
+22:21:05.586 instance_id=19D7A1BD0FE [info] backend reports empty
+
+22:21:13.874 instance_id=19D7A1BD0FE [error] Could not expand alias: {:%, [line: 836, column: 13], [{:__aliases__, [last: [line: 836, column: 14], line: 836, column: 14], [:Table]}, {:%{}, [closing: [line: 836, column: 30], line: 836, column: 19], [{{:__block__, [format: :keyword, line: 836, column: 20], [:name]}, {:name, [line: 836, column: 26], nil}}]}]} at /home/felipe/workspace/app/deps/ecto_sql/lib/ecto/migration.ex 836:5
+
+22:21:13.954 instance_id=19D7A1BD0FE [error] Could not expand alias: {:%, [line: 1026, column: 21], [{:__aliases__, [last: [line: 1026, column: 22], line: 1026, column: 22], [:Index]}, {:%{}, [closing: [line: 1026, column: 58], line: 1026, column: 27], [{{:__block__, [format: :keyword, line: 1026, column: 28], [:table]}, {:table, [line: 1026, column: 35], nil}}, {{:__block__, [format: :keyword, line: 1026, column: 42], [:columns]}, {:columns, [line: 1026, column: 51], nil}}]}]} at /home/felipe/workspace/app/deps/ecto_sql/lib/ecto/migration.ex 1026:13
+
+22:21:14.594 instance_id=19D7A1BD0FE [error] Could not expand alias: {:%, [line: 1547, column: 25], [{:__aliases__, [last: [line: 1547, column: 26], line: 1547, column: 26], [:Reference]}, {:%{}, [closing: [line: 1547, column: 48], line: 1547, column: 35], [{{:__block__, [format: :keyword, line: 1547, column: 36], [:table]}, {:table, [line: 1547, column: 43], nil}}]}]} at /home/felipe/workspace/app/deps/ecto_sql/lib/ecto/migration.ex 1547:17
+
+22:21:14.729 instance_id=19D7A1BD0FE [error] Could not expand alias: {:%, [line: 1640, column: 13], [{:__aliases__, [last: [line: 1640, column: 14], line: 1640, column: 14], [:Constraint]}, {:%{}, [closing: [line: 1640, column: 49], line: 1640, column: 24], [{{:__block__, [format: :keyword, line: 1640, column: 25], [:table]}, {:table, [line: 1640, column: 32], nil}}, {{:__block__, [format: :keyword, line: 1640, column: 39], [:name]}, {:name, [line: 1640, column: 45], nil}}]}]} at /home/felipe/workspace/app/deps/ecto_sql/lib/ecto/migration.ex 1640:5
+
+22:21:14.995 instance_id=19D7A1BD0FE [error] Could not expand alias: {:^, [line: 949, column: 16], [{:struct_name, [line: 949, column: 17], nil}]} at /home/felipe/workspace/app/deps/nimble_options/lib/nimble_options.ex 949:15
+
+22:21:22.306 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 45, column: 20], [{:for, [line: 45, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/websocket/frame/connection_close.ex 45:19
+
+22:21:22.307 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 46, column: 20], [{:for, [line: 46, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/websocket/frame/connection_close.ex 46:19
+
+22:21:22.308 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 47, column: 20], [{:for, [line: 47, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/websocket/frame/connection_close.ex 47:19
+
+22:21:25.140 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 30, column: 20], [{:for, [line: 30, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/websocket/frame/pong.ex 30:19
+
+22:21:28.964 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 22, column: 20], [{:for, [line: 22, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/websocket/frame/continuation.ex 22:19
+
+22:21:29.013 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 18, column: 20], [{:for, [line: 18, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/websocket/frame/binary.ex 18:19
+
+22:21:30.244 instance_id=19D7A1BD0FE [error] Could not expand alias: {:%{}, [closing: [line: 590, column: 19], line: 590, column: 17], []} at /home/felipe/workspace/app/deps/ecto/integration_test/cases/repo.exs 590:10
+
+22:21:30.281 instance_id=19D7A1BD0FE [error] Could not expand alias: {:%{}, [closing: [line: 598, column: 19], line: 598, column: 17], []} at /home/felipe/workspace/app/deps/ecto/integration_test/cases/repo.exs 598:10
+
+22:21:32.337 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:21:32.337 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:21:32.978 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:21:32.978 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:21:38.067 instance_id=19D7A1BD0FE [error] Could not expand alias: {:%, [line: 85, column: 19], [{:__MODULE__, [line: 85, column: 20], nil}, {:%{}, [closing: [line: 85, column: 50], line: 85, column: 30], [{{:__block__, [format: :keyword, line: 85, column: 31], [:queue]}, {{:., [line: 85, column: 44], [{:__block__, [line: 85, column: 38], [:queue]}, :new]}, [closing: [line: 85, column: 49], line: 85, column: 45], []}}]}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/trace.ex 85:11
+
+22:21:39.006 instance_id=19D7A1BD0FE [error] Could not expand alias: {:%, [line: 58, column: 12], [{:__aliases__, [last: [line: 58, column: 13], line: 58, column: 13], [:Embedded]}, {:%{}, [closing: [line: 58, column: 22], line: 58, column: 21], []}]} at /home/felipe/workspace/app/deps/ecto/lib/ecto/embedded.ex 58:5
+
+22:21:39.021 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 212, column: 18], [{:for, [line: 212, column: 19], nil}]} at /home/felipe/workspace/app/deps/expo/lib/expo/plural_forms.ex 212:17
+
+22:21:40.037 instance_id=19D7A1BD0FE [error] Could not expand alias: {{:., [line: 105, column: 40], [{:connection, [line: 105, column: 30], nil}, :remote_settings]}, [no_parens: true, line: 105, column: 41], []} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/connection.ex 105:23
+
+22:21:40.962 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 108, column: 20], [{:for, [line: 108, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 108:19
+
+22:21:40.977 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 110, column: 20], [{:for, [line: 110, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 110:19
+
+22:21:40.980 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 112, column: 19], [{:for, [line: 112, column: 20], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 112:18
+
+22:21:41.007 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 114, column: 18], [{:for, [line: 114, column: 19], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 114:17
+
+22:21:41.009 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 116, column: 23], [{:for, [line: 116, column: 24], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 116:22
+
+22:21:41.034 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 137, column: 10], [{:for, [line: 137, column: 11], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 137:9
+
+22:21:41.285 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 244, column: 20], [{:for, [line: 244, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 244:19
+
+22:21:41.307 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 250, column: 24], [{:for, [line: 250, column: 25], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 250:23
+
+22:21:41.352 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 271, column: 10], [{:for, [line: 271, column: 11], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 271:9
+
+22:21:41.366 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 276, column: 24], [{:for, [line: 276, column: 25], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 276:23
+
+22:21:41.378 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 285, column: 19], [{:for, [line: 285, column: 20], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 285:18
+
+22:21:41.417 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 303, column: 19], [{:for, [line: 303, column: 20], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 303:18
+
+22:21:41.452 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 323, column: 19], [{:for, [line: 323, column: 20], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 323:18
+
+22:21:41.477 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 341, column: 19], [{:for, [line: 341, column: 20], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 341:18
+
+22:21:41.479 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 352, column: 27], [{:for, [line: 352, column: 28], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 352:26
+
+22:21:43.482 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 415, column: 23], [{:for, [line: 415, column: 24], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 415:22
+
+22:21:44.125 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 440, column: 20], [{:for, [line: 440, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 440:19
+
+22:21:44.214 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 481, column: 19], [{:for, [line: 481, column: 20], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 481:18
+
+22:21:44.300 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 526, column: 31], [{:for, [line: 526, column: 32], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 526:30
+
+22:21:45.062 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 543, column: 40], [{:for, [line: 543, column: 41], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 543:39
+
+22:21:45.072 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 546, column: 40], [{:for, [line: 546, column: 41], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 546:39
+
+22:21:45.076 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 551, column: 27], [{:for, [line: 551, column: 28], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 551:26
+
+22:21:45.083 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 553, column: 27], [{:for, [line: 553, column: 28], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 553:26
+
+22:21:45.126 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 566, column: 27], [{:for, [line: 566, column: 28], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 566:26
+
+22:21:45.128 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 574, column: 29], [{:for, [line: 574, column: 30], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 574:28
+
+22:21:45.143 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 576, column: 24], [{:for, [line: 576, column: 25], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 576:23
+
+22:21:45.150 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 581, column: 24], [{:for, [line: 581, column: 25], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 581:23
+
+22:21:45.192 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 586, column: 24], [{:for, [line: 586, column: 25], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 586:23
+
+22:21:45.210 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 591, column: 24], [{:for, [line: 591, column: 25], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 591:23
+
+22:21:45.224 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 596, column: 24], [{:for, [line: 596, column: 25], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http2/stream.ex 596:23
+
+22:21:45.617 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:21:45.618 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:21:54.135 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 47, column: 20], [{:for, [line: 47, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 47:19
+
+22:21:54.148 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 49, column: 20], [{:for, [line: 49, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 49:19
+
+22:21:54.151 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 51, column: 19], [{:for, [line: 51, column: 20], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 51:18
+
+22:21:54.161 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 53, column: 18], [{:for, [line: 53, column: 19], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 53:17
+
+22:21:54.163 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 55, column: 23], [{:for, [line: 55, column: 24], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 55:22
+
+22:21:55.261 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 173, column: 12], [{:for, [line: 173, column: 13], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 173:11
+
+22:21:55.311 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 189, column: 20], [{:for, [line: 189, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 189:19
+
+22:21:55.383 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 201, column: 20], [{:for, [line: 201, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 201:19
+
+22:21:55.506 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 206, column: 20], [{:for, [line: 206, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 206:19
+
+22:21:56.956 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 349, column: 23], [{:for, [line: 349, column: 24], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 349:22
+
+22:21:57.331 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 413, column: 20], [{:for, [line: 413, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 413:19
+
+22:21:57.370 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 419, column: 20], [{:for, [line: 419, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 419:19
+
+22:21:57.404 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 426, column: 20], [{:for, [line: 426, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 426:19
+
+22:21:57.422 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 432, column: 19], [{:for, [line: 432, column: 20], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 432:18
+
+22:21:57.679 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 454, column: 27], [{:for, [line: 454, column: 28], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 454:26
+
+22:21:57.680 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 455, column: 27], [{:for, [line: 455, column: 28], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 455:26
+
+22:21:57.680 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 457, column: 27], [{:for, [line: 457, column: 28], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 457:26
+
+22:21:57.691 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 473, column: 29], [{:for, [line: 473, column: 30], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 473:28
+
+22:21:57.692 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 475, column: 24], [{:for, [line: 475, column: 25], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 475:23
+
+22:21:57.698 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 477, column: 24], [{:for, [line: 477, column: 25], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/http1/socket.ex 477:23
+
+22:21:59.315 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:21:59.315 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:21:59.648 instance_id=19D7A1BD0FE [error] Could not expand alias: {:__block__, [closing: [line: 266, column: 19], line: 266, column: 17], [[]]} at /home/felipe/workspace/app/deps/oban/lib/oban/validation.ex 266:10
+
+22:22:05.189 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.190 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.246 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.246 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.271 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.271 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.318 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.319 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.410 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.411 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.476 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.476 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.495 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.496 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.523 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.523 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.550 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.550 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.555 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.555 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.654 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:05.654 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:20.644 instance_id=19D7A1BD0FE [error] Could not expand alias: {:unquote, [closing: [line: 567, column: 41], line: 567, column: 27], [{:struct, [line: 567, column: 35], nil}]} at /home/felipe/workspace/app/deps/phoenix_live_view/lib/phoenix_component/declarative.ex 567:26
+
+22:22:24.248 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 18, column: 20], [{:for, [line: 18, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/websocket/frame/text.ex 18:19
+
+22:22:42.129 instance_id=19D7A1BD0FE [error] Could not expand alias: {:@, [line: 30, column: 20], [{:for, [line: 30, column: 21], nil}]} at /home/felipe/workspace/app/deps/bandit/lib/bandit/websocket/frame/ping.ex 30:19
+
+22:22:44.177 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.178 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.199 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.199 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.227 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.227 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.234 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.234 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.268 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.268 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.279 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.279 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.291 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.291 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.311 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.312 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.322 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.322 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.339 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.340 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.363 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.363 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.383 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.384 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.400 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.400 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.412 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:22:44.413 instance_id=19D7A1BD0FE [warning] nothing to expand (expand_alias was passed nil)
+
+22:56:15.853 instance_id=19D7A1BD0FE [info] Plugins found 0 results in 0.44 ms
+
+22:56:18.051 instance_id=19D7A1BD0FE [info] Plugins found 0 results in 0.078 ms
+
+22:56:23.445 instance_id=19D7A1BD0FE [info] Plugins found 0 results in 0.113 ms
+
+23:04:17.870 instance_id=19D7A1BD0FE [info] Resolved entity: {:variable, :stroke}
+
+23:04:35.978 instance_id=19D7A1BD0FE [warning] Could not expand module [{:parts, [line: 63, column: 89], nil}, :Join]. Please report this (at /home/felipe/workspace/app/lib/app_web/controllers/page_html/home.html.heex 63:94)
+
+23:04:35.985 instance_id=19D7A1BD0FE [warning] Could not expand module [{:parts, [line: 63, column: 89], nil}, :Join]. Please report this (at /home/felipe/workspace/app/lib/app_web/controllers/page_html/home.html.heex 63:94)
+
+23:07:18.126 instance_id=19D7A1BD0FE [info] Plugins found 0 results in 0.054 ms
+
+15:03:58.437 instance_id=19D82DCFAF5 [info] Building app
+
+15:03:58.774 instance_id=19D82DCFAF5 [warning] Could not connect to hex.pm, dependencies will not be fetched
+
+15:03:58.923 instance_id=19D82DCFAF5 [info] Loaded []
+
+15:04:01.906 instance_id=19D82DCFAF5 [info] Compile completed with status ok Produced 0 diagnostics []
+
+15:04:02.017 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.029 ms
+
+15:04:07.208 instance_id=19D82DCFAF5 [notice] disk_log: repairing ~c"/home/felipe/workspace/app/.expert/indexes/ets/28.4/1.20.0-rc.2/4/updates.wal" ...
+
+
+15:04:09.750 instance_id=19D82DCFAF5 [info] backend reports stale
+
+15:27:28.589 instance_id=19D82DCFAF5 [error] Could not update index because {:error, :not_open}
+
+15:27:29.001 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.09 ms
+
+15:29:28.495 instance_id=19D82DCFAF5 [error] Could not update index because {:error, :not_open}
+
+15:29:28.639 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.017 ms
+
+15:57:57.554 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.018 ms
+
+16:14:46.293 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.033 ms
+
+16:15:23.847 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.014 ms
+
+16:16:18.303 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.008 ms
+
+16:16:22.526 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.02 ms
+
+16:16:28.650 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.021 ms
+
+16:16:44.332 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.032 ms
+
+16:31:53.826 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.105 ms
+
+16:42:48.727 instance_id=19D82DCFAF5 [info] Resolved entity: {:call, Kernel, :defmodule, 2}
+
+16:42:48.735 instance_id=19D82DCFAF5 [info] Resolved entity: {:call, Kernel, :defmodule, 2}
+
+16:42:53.394 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:42:53.397 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:42:53.398 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:42:53.405 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:42:53.406 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:42:53.408 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:42:53.419 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:42:53.425 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:42:55.402 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:42:55.404 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:42:55.405 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:42:55.411 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:42:55.412 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:42:55.413 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:42:55.417 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:42:55.418 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:42:55.691 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :lg}
+
+16:42:55.968 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :apenas}
+
+16:42:57.646 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:42:57.648 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:42:57.649 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:42:57.652 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:42:57.653 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:42:57.654 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:42:57.659 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:42:57.660 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:42:57.893 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :sm}
+
+16:42:57.913 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:42:57.915 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:42:57.915 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:42:57.920 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:42:57.920 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:42:57.921 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:42:57.925 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:42:57.926 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:00.702 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :start}
+
+16:43:00.788 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:00.793 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:00.795 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:00.804 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:00.811 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:00.813 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:00.818 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:00.824 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:07.194 instance_id=19D82DCFAF5 [info] Resolved entity: {:module, Layouts}
+
+16:43:09.148 instance_id=19D82DCFAF5 [info] Resolved entity: {:call, AppWeb.HomeLive, :link, 1}
+
+16:43:10.896 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :href}
+
+16:43:10.914 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :href}
+
+16:43:12.218 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:12.222 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:12.223 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:12.231 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:12.232 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:12.235 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:12.249 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:12.253 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:14.359 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.015 ms
+
+16:43:14.569 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.022 ms
+
+16:43:14.781 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.192 ms
+
+16:43:15.017 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.069 ms
+
+16:43:15.238 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.016 ms
+
+16:43:15.492 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.081 ms
+
+16:43:15.568 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:15.570 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:15.571 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:15.580 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:15.581 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:15.583 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:15.588 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:15.590 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:16.603 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:16.609 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:16.611 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:16.637 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:16.650 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:16.652 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:16.664 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:16.671 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:16.895 instance_id=19D82DCFAF5 [info] Building app
+
+16:43:17.316 instance_id=19D82DCFAF5 [info] Compile completed with status ok Produced 0 diagnostics []
+
+16:43:17.317 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.031 ms
+
+16:43:20.346 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :w}
+
+16:43:20.401 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:20.405 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:20.406 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:20.417 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:20.421 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:20.425 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:20.437 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:20.446 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:21.741 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :class}
+
+16:43:22.566 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :li}
+
+16:43:23.244 instance_id=19D82DCFAF5 [info] Resolved entity: {:call, AppWeb.HomeLive, :link, 1}
+
+16:43:23.414 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :href}
+
+16:43:23.462 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:23.464 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:23.465 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:23.482 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:23.484 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:23.486 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:23.503 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:23.505 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:23.827 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :href}
+
+16:43:23.892 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :href}
+
+16:43:24.068 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :href}
+
+16:43:24.203 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:24.205 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:24.206 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:24.211 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:24.212 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:24.213 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:24.216 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:24.218 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:24.918 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is in read-only mode (@after_compile)
+    (elixir 1.20.0-rc.2) lib/module.ex:2439: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:24.919 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:24.923 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is in read-only mode (@after_compile)
+    (elixir 1.20.0-rc.2) lib/module.ex:2439: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:24.927 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:24.930 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is in read-only mode (@after_compile)
+    (elixir 1.20.0-rc.2) lib/module.ex:2439: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:25.010 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.016 ms
+
+16:43:25.256 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :navig}
+
+16:43:25.314 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.011 ms
+
+16:43:25.693 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.209 ms
+
+16:43:26.018 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.013 ms
+
+16:43:26.908 instance_id=19D82DCFAF5 [info] Building app
+
+16:43:27.231 instance_id=19D82DCFAF5 [info] Compile completed with status ok Produced 0 diagnostics []
+
+16:43:27.233 instance_id=19D82DCFAF5 [info] Plugins found 0 results in 0.019 ms
+
+16:43:27.688 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :btn}
+
+16:43:27.737 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:27.743 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:27.749 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:27.759 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:27.763 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:27.768 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:27.775 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:27.777 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:31.587 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :href}
+
+16:43:31.686 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:31.696 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:31.701 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:31.746 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:31.750 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:31.766 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:31.791 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:31.799 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:32.639 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :my}
+
+16:43:32.661 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:32.668 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:32.669 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:32.676 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:32.678 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:32.682 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:32.695 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:32.701 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:33.422 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :my}
+
+16:43:33.484 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:33.488 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:33.488 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:33.499 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:33.501 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:33.502 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:33.508 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:33.513 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:33.673 instance_id=19D82DCFAF5 [info] Resolved entity: {:variable, :my}
+
+16:43:33.700 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:33.702 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:33.704 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:33.724 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:33.729 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+
+
+16:43:33.742 instance_id=19D82DCFAF5 [warning] ** (RuntimeError) ~H requires a variable named "assigns" to exist and be set to a map
+    (phoenix_live_view 1.1.28) lib/phoenix_component.ex:917: Phoenix.Component."MACRO-sigil_H"/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/normalized/macro/env.ex:54: anonymous fn/5 in XPElixirSense.Core.Normalized.Macro.Env.wrap_expansion/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2144: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2055: XPElixirSense.Core.Compiler.expand_macro/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:2165: XPElixirSense.Core.Compiler.expand_macro_callback/7
+    (xp_elixir_sense 2.0.0) lib/elixir_sense/core/compiler.ex:117: XPElixirSense.Core.Compiler.expand/3
+
+
+16:43:33.766 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.put_attribute/3 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2444: Module.assert_not_compiled!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:2123: Module.__put_attribute__/5
+    (gettext 0.26.2) expanding macro: Gettext.__using__/1
+    nofile:2: AppWeb.HomeLive (module)
+
+
+16:43:33.775 instance_id=19D82DCFAF5 [warning] ** (ArgumentError) could not call Module.delete_attribute/2 because the module AppWeb.HomeLive is already compiled
+    (elixir 1.20.0-rc.2) lib/module.ex:2420: Module.data_tables_for!/3
+    (elixir 1.20.0-rc.2) lib/module.ex:1720: Module.delete_attribute/2
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:1077: Phoenix.Component.Declarative.pop_slots/1
+    (phoenix_live_view 1.1.28) lib/phoenix_component/declarative.ex:753: Phoenix.Component.Declarative.register_component!/4
+    (phoenix_live_view 1.1.28) expanding macro: Phoenix.Component.Declarative.__pattern__!/2
+    (app 0.1.0) nofile:35: AppWeb.HomeLive.render/1
+

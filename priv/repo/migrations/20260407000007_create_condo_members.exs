@@ -2,9 +2,7 @@ defmodule App.Repo.Migrations.CreateCondoMembers do
   use Ecto.Migration
 
   def change do
-    create table(:condo_members,  prefix: "condo") do
-
-
+    create table(:condo_members, prefix: "condo") do
       add :user_id,
           references(:users, type: :binary_id, prefix: "identity", on_delete: :delete_all),
           null: false

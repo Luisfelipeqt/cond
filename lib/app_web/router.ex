@@ -20,7 +20,10 @@ defmodule AppWeb.Router do
   scope "/", AppWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live_session :public,
+      on_mount: [{AppWeb.UserAuth, :mount_current_scope}] do
+      live "/", HomeLive
+    end
   end
 
   # Other scopes may use custom stacks.

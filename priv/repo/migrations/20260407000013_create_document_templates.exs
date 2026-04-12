@@ -2,9 +2,7 @@ defmodule App.Repo.Migrations.CreateDocumentTemplates do
   use Ecto.Migration
 
   def change do
-    create table(:document_templates,  prefix: "documents") do
-
-
+    create table(:document_templates, prefix: "documents") do
       add :org_id,
           references(:organizations, type: :binary_id, prefix: "condo"),
           null: false

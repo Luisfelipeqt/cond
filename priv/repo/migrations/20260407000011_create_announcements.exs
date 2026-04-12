@@ -2,9 +2,7 @@ defmodule App.Repo.Migrations.CreateAnnouncements do
   use Ecto.Migration
 
   def change do
-    create table(:announcements,  prefix: "communication") do
-
-
+    create table(:announcements, prefix: "communication") do
       add :condo_id,
           references(:condominiums, type: :binary_id, prefix: "condo"),
           null: false

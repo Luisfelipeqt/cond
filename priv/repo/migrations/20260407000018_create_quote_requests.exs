@@ -2,9 +2,7 @@ defmodule App.Repo.Migrations.CreateQuoteRequests do
   use Ecto.Migration
 
   def change do
-    create table(:quote_requests,  prefix: "quotation") do
-
-
+    create table(:quote_requests, prefix: "quotation") do
       add :condo_id,
           references(:condominiums, type: :binary_id, prefix: "condo"),
           null: false

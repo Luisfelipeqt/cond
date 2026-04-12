@@ -2,9 +2,7 @@ defmodule App.Repo.Migrations.CreateCommonAreas do
   use Ecto.Migration
 
   def change do
-    create table(:common_areas,  prefix: "condo") do
-
-
+    create table(:common_areas, prefix: "condo") do
       add :condo_id,
           references(:condominiums, type: :binary_id, prefix: "condo"),
           null: false
