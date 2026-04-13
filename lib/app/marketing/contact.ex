@@ -1,6 +1,7 @@
 defmodule App.Marketing.Contact do
   use App.Schema
-
+  import App.Utils
+  import Brcpfcnpj.Changeset
   @schema_prefix "marketing"
 
   schema "contacts" do
@@ -23,14 +24,11 @@ defmodule App.Marketing.Contact do
       message: "obrigatório"
     )
     |> validate_length(:name, min: 2, max: 100, message: "mínimo 2 caracteres")
-    |> validate_format(:email, ~r/^[^\s]+@[^\s]+\.[^\s]+$/,
-      message: "formato inválido"
-    )
-    |> normalize_cpf()
-    |> validate_cpf_format()
-    |> normalize_phone()
-    |> validate_length(:phone, min: 10, max: 20, message: "mínimo 10 dígitos")
+    |> validate_format(:email, ~r/^[^\s]+@[^\s]+\.[^\s]+$/, message: "formato inválido")
+    |> validate_length(:phone, min: 11, max: 15, message: "mínimo 10 dígitos")
     |> update_change(:email, &String.downcase/1)
+    |> update_change(:name, &normalize/1)
+    |> validate_cpf(:cpf)
     |> unique_constraint(:email,
       name: "marketing_contacts_email_index",
       message: "já cadastrado — em breve entraremos em contato"
@@ -39,32 +37,5 @@ defmodule App.Marketing.Contact do
       name: "marketing_contacts_cpf_index",
       message: "já cadastrado — em breve entraremos em contato"
     )
-  end
-
-  defp normalize_cpf(changeset) do
-    update_change(changeset, :cpf, fn cpf ->
-      String.replace(cpf, ~r/\D/, "")
-    end)
-  end
-
-  defp validate_cpf_format(changeset) do
-    validate_change(changeset, :cpf, fn :cpf, cpf ->
-      cond do
-        String.length(cpf) != 11 ->
-          [cpf: "deve ter 11 dígitos"]
-
-        cpf |> String.graphemes() |> Enum.uniq() |> length() == 1 ->
-          [cpf: "inválido"]
-
-        true ->
-          []
-      end
-    end)
-  end
-
-  defp normalize_phone(changeset) do
-    update_change(changeset, :phone, fn phone ->
-      String.replace(phone, ~r/[^\d+]/, "")
-    end)
   end
 end

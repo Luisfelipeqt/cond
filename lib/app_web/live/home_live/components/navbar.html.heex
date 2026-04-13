@@ -1,0 +1,158 @@
+<%!-- SKIP LINK --%>
+<a
+  href="#conteudo"
+  class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[200] btn btn-primary btn-sm"
+>
+  Ir para o conteúdo principal
+</a>
+
+<%!-- NAVBAR --%>
+<nav
+  class="navbar bg-base-100/80 backdrop-blur-sm border-b border-base-300 sticky top-0 z-50 px-4 md:px-10"
+  aria-label="Navegação principal"
+>
+  <div class="navbar-start">
+    <.link
+      navigate={~p"/"}
+      class="text-base font-bold text-base-content tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+    >
+      síndico.app
+    </.link>
+  </div>
+
+  <%!-- Links centrais — visíveis apenas em telas grandes --%>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal gap-1 text-sm text-base-content/60">
+      <li>
+        <button
+          phx-click={JS.dispatch("smooth-scroll", detail: %{id: "como-funciona"})}
+          class="hover:text-base-content rounded-lg"
+        >
+          Como funciona
+        </button>
+      </li>
+      <li>
+        <button
+          phx-click={JS.dispatch("smooth-scroll", detail: %{id: "plataforma"})}
+          class="hover:text-base-content rounded-lg"
+        >
+          Plataforma
+        </button>
+      </li>
+      <li>
+        <button
+          phx-click={JS.dispatch("smooth-scroll", detail: %{id: "para-quem"})}
+          class="hover:text-base-content rounded-lg"
+        >
+          Para quem
+        </button>
+      </li>
+      <li>
+        <button
+          phx-click={JS.dispatch("smooth-scroll", detail: %{id: "precos"})}
+          class="hover:text-base-content rounded-lg"
+        >
+          Preços
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="navbar-end gap-2">
+    <%!-- Ações desktop --%>
+    <.link navigate={~p"/users/log-in"} class="btn btn-ghost btn-sm hidden lg:flex">Entrar</.link>
+    <button
+      phx-click={JS.dispatch("smooth-scroll", detail: %{id: "contato"})}
+      class="btn btn-primary btn-sm hidden sm:flex"
+    >
+      Falar com a equipe
+    </button>
+    <Layouts.theme_toggle />
+
+    <%!-- Menu hamburger — visível até lg --%>
+    <div class="dropdown dropdown-end lg:hidden">
+      <button
+        tabindex="0"
+        class="btn btn-ghost btn-sm min-h-[44px] min-w-[44px]"
+        aria-label="Abrir menu"
+        aria-haspopup="true"
+      >
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+      </button>
+      <ul
+        tabindex="0"
+        class="menu menu-sm dropdown-content bg-base-100 border border-base-300 rounded-2xl z-50 mt-3 w-60 p-3 shadow-xl"
+        role="menu"
+      >
+        <li role="none">
+          <button
+            phx-click={JS.dispatch("smooth-scroll", detail: %{id: "como-funciona"})}
+            class="py-3 text-sm w-full text-left"
+            role="menuitem"
+          >
+            Como funciona
+          </button>
+        </li>
+        <li role="none">
+          <button
+            phx-click={JS.dispatch("smooth-scroll", detail: %{id: "plataforma"})}
+            class="py-3 text-sm w-full text-left"
+            role="menuitem"
+          >
+            Plataforma
+          </button>
+        </li>
+        <li role="none">
+          <button
+            phx-click={JS.dispatch("smooth-scroll", detail: %{id: "para-quem"})}
+            class="py-3 text-sm w-full text-left"
+            role="menuitem"
+          >
+            Para quem
+          </button>
+        </li>
+        <li role="none">
+          <button
+            phx-click={JS.dispatch("smooth-scroll", detail: %{id: "precos"})}
+            class="py-3 text-sm w-full text-left"
+            role="menuitem"
+          >
+            Preços
+          </button>
+        </li>
+        <li class="divider my-1" role="none"></li>
+        <li role="none">
+          <button
+            phx-click={JS.dispatch("smooth-scroll", detail: %{id: "contato"})}
+            class="btn btn-primary btn-sm w-full mt-1"
+            role="menuitem"
+          >
+            Falar com a equipe
+          </button>
+        </li>
+        <li role="none">
+          <.link
+            navigate={~p"/users/log-in"}
+            class="btn btn-ghost btn-sm w-full mt-1"
+            role="menuitem"
+          >
+            Entrar
+          </.link>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

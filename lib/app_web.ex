@@ -52,6 +52,9 @@ defmodule AppWeb do
     quote do
       use Phoenix.LiveView
 
+      def ok(socket), do: {:ok, socket}
+      def noreply(socket), do: {:noreply, socket}
+      def scope(socket), do: socket.assigns[:current_scope]
       unquote(html_helpers())
     end
   end
@@ -59,7 +62,9 @@ defmodule AppWeb do
   def live_component do
     quote do
       use Phoenix.LiveComponent
-
+      def ok(socket), do: {:ok, socket}
+      def noreply(socket), do: {:noreply, socket}
+      def scope(socket), do: socket.assigns[:current_scope]
       unquote(html_helpers())
     end
   end

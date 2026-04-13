@@ -44,8 +44,10 @@ defmodule AppWeb.UserLive.Registration do
           </.form>
 
           <p class="text-xs text-center text-base-content/40">
-            Ao criar uma conta, você concorda com os nossos
-            <a href="#" class="underline hover:text-base-content transition-colors">termos de uso</a>.
+            Ao criar uma conta, você concorda com os nossos <a
+              href="#"
+              class="underline hover:text-base-content transition-colors"
+            >termos de uso</a>.
           </p>
         </div>
       </div>

@@ -22,7 +22,7 @@ defmodule AppWeb.Router do
 
     live_session :public,
       on_mount: [{AppWeb.UserAuth, :mount_current_scope}] do
-      live "/", HomeLive
+      live "/", HomeLive.Index
     end
   end
 

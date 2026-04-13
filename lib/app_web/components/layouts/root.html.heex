@@ -31,5 +31,11 @@
   </head>
   <body class="antialiased">
     {@inner_content}
+    <script>
+      document.addEventListener("smooth-scroll", (e) => {
+        const el = document.getElementById(e.detail.id);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    </script>
   </body>
 </html>

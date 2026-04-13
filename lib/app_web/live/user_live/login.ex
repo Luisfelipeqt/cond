@@ -34,8 +34,7 @@ defmodule AppWeb.UserLive.Login do
           <div :if={local_mail_adapter?()} class="alert alert-info text-sm py-2">
             <.icon name="hero-information-circle" class="size-4 shrink-0" />
             <span>
-              Veja os emails em
-              <.link href="/dev/mailbox" class="underline">mailbox</.link>.
+              Veja os emails em <.link href="/dev/mailbox" class="underline">mailbox</.link>.
             </span>
           </div>
 

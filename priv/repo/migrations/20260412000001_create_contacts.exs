@@ -2,8 +2,6 @@ defmodule App.Repo.Migrations.CreateContacts do
   use Ecto.Migration
 
   def change do
-    execute "CREATE SCHEMA IF NOT EXISTS marketing", "DROP SCHEMA IF EXISTS marketing CASCADE"
-
     create table(:contacts, prefix: "marketing") do
       add :name, :string, null: false
       add :email, :string, null: false
