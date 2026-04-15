@@ -1,0 +1,207 @@
+<Layouts.private_app flash={@flash} current_scope={@current_scope} condo={@condo}>
+  <%!-- Page header --%>
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+    <div>
+      <h1 class="text-2xl font-bold text-base-content">Assembleias & Atas</h1>
+      <p class="text-sm text-base-content/50 mt-1">
+        Gerencie assembleias gerais, reuniões de conselho e o ciclo de vida das atas.
+      </p>
+    </div>
+    <.link
+      patch={~p"/condominios/#{@condo.id}/assembleias/nova"}
+      class="btn btn-primary btn-sm shrink-0"
+    >
+      <.icon name="hero-plus" class="size-4" />
+      Nova assembleia
+    </.link>
+  </div>
+
+  <%!-- Filter tabs --%>
+  <div role="tablist" class="tabs tabs-box tabs-sm mb-6 w-fit">
+    <.link
+      patch={~p"/condominios/#{@condo.id}/assembleias"}
+      role="tab"
+      class={["tab", @filter == "all" && "tab-active"]}
+    >
+      Todas
+    </.link>
+    <.link
+      patch={~p"/condominios/#{@condo.id}/assembleias?filter=scheduled"}
+      role="tab"
+      class={["tab", @filter == "scheduled" && "tab-active"]}
+    >
+      Agendadas
+    </.link>
+    <.link
+      patch={~p"/condominios/#{@condo.id}/assembleias?filter=held"}
+      role="tab"
+      class={["tab", @filter == "held" && "tab-active"]}
+    >
+      Realizadas
+    </.link>
+    <.link
+      patch={~p"/condominios/#{@condo.id}/assembleias?filter=minutes_draft"}
+      role="tab"
+      class={["tab", @filter == "minutes_draft" && "tab-active"]}
+    >
+      Em aprovação
+    </.link>
+  </div>
+
+  <%!-- Meeting list --%>
+  <%= if Enum.empty?(@meetings) do %>
+    <%!-- Empty state --%>
+    <div class="flex flex-col items-center justify-center py-24 text-center">
+      <div class="w-16 h-16 rounded-2xl bg-base-200 flex items-center justify-center mb-4">
+        <.icon name="hero-document-text" class="size-8 text-base-content/30" />
+      </div>
+      <h3 class="text-base font-semibold text-base-content mb-1">Nenhuma assembleia ainda</h3>
+      <p class="text-sm text-base-content/50 max-w-xs mb-6">
+        Crie a primeira assembleia para começar a registrar pautas, presenças e deliberações.
+      </p>
+      <.link patch={~p"/condominios/#{@condo.id}/assembleias/nova"} class="btn btn-primary btn-sm">
+        <.icon name="hero-plus" class="size-4" />
+        Nova assembleia
+      </.link>
+    </div>
+  <% else %>
+    <div class="overflow-x-auto rounded-xl border border-base-300">
+      <table class="table table-sm">
+        <thead>
+          <tr class="text-xs text-base-content/50 uppercase tracking-wide">
+            <th>Tipo</th>
+            <th>Assembleia</th>
+            <th>Data</th>
+            <th>Local</th>
+            <th>Status</th>
+            <th class="text-right">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr :for={meeting <- @meetings} class="hover">
+            <td>
+              <span class="badge badge-ghost badge-sm font-mono">
+                {meeting_type_label(meeting.type)}
+              </span>
+            </td>
+            <td class="font-medium text-base-content">{meeting.title}</td>
+            <td class="text-base-content/60 text-sm whitespace-nowrap">
+              {Calendar.strftime(meeting.scheduled_at, "%d/%m/%Y")}
+            </td>
+            <td class="text-base-content/60 text-sm">{meeting.location || "—"}</td>
+            <td>
+              <span class={["badge badge-sm", meeting_status_class(meeting.status)]}>
+                {meeting_status_label(meeting.status)}
+              </span>
+            </td>
+            <td class="text-right">
+              <.link
+                navigate={~p"/condominios/#{@condo.id}/assembleias/#{meeting.id}"}
+                class="btn btn-ghost btn-xs"
+              >
+                Ver ata
+              </.link>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</Layouts.private_app>
+
+<%!-- Modal: Nova Assembleia (DaisyUI dialog) --%>
+<dialog :if={@live_action == :new} id="new-meeting-modal" class="modal modal-open" open>
+  <div class="modal-box max-w-xl">
+    <div class="flex items-center justify-between mb-5">
+      <h3 class="text-lg font-bold">Nova Assembleia</h3>
+      <button phx-click="cancel" class="btn btn-ghost btn-sm btn-square">
+        <.icon name="hero-x-mark" class="size-5" />
+      </button>
+    </div>
+
+    <.form
+      for={@form}
+      id="new-meeting-form"
+      phx-change="validate"
+      phx-submit="save"
+      class="space-y-4"
+    >
+      <.input
+        field={@form[:title]}
+        type="text"
+        label="Título"
+        placeholder="1ª Assembleia Geral Ordinária de 2026"
+        required
+      />
+
+      <div class="grid grid-cols-2 gap-4">
+        <.input
+          field={@form[:type]}
+          type="select"
+          label="Tipo"
+          options={[
+            {"AGO — Geral Ordinária", "ago"},
+            {"AGE — Geral Extraordinária", "age"},
+            {"Reunião de Conselho", "council"},
+            {"Outro", "other"}
+          ]}
+          required
+        />
+        <.input
+          field={@form[:quorum_type]}
+          type="select"
+          label="Quórum exigido"
+          options={[
+            {"Maioria simples", "simple"},
+            {"Maioria absoluta (> 50%)", "absolute"},
+            {"Dois terços (> 66%)", "two_thirds"},
+            {"Unanimidade", "unanimous"}
+          ]}
+          required
+        />
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <.input
+          field={@form[:scheduled_at]}
+          type="datetime-local"
+          label="Data e hora"
+          required
+        />
+        <.input
+          field={@form[:second_call_minutes]}
+          type="number"
+          label="2ª convocação (min)"
+          placeholder="30"
+        />
+      </div>
+
+      <.input
+        field={@form[:location]}
+        type="text"
+        label="Local"
+        placeholder="Salão de festas, Rua X, 123"
+      />
+
+      <.input
+        field={@form[:convocation_text]}
+        type="textarea"
+        label="Texto da convocação"
+        placeholder="Ficam convocados todos os condôminos para..."
+        rows={4}
+      />
+
+      <div class="modal-action mt-2">
+        <button type="button" phx-click="cancel" class="btn btn-ghost btn-sm">
+          Cancelar
+        </button>
+        <button type="submit" class="btn btn-primary btn-sm" phx-disable-with="Salvando...">
+          Criar assembleia
+        </button>
+      </div>
+    </.form>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button phx-click="cancel">Fechar</button>
+  </form>
+</dialog>

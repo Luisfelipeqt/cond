@@ -7,10 +7,20 @@ defmodule AppWeb.HomeLive.Index do
     changeset = Marketing.change_contact()
 
     socket
+    |> assign(:page_title, "síndico.app")
     |> assign(:form, to_form(changeset, as: "contact"))
     |> assign(:contact_submitted, false)
     |> ok()
   end
+
+  def handle_params(%{"to" => section}, _uri, socket) do
+    socket
+    |> push_event("scroll-to", %{id: section})
+    |> push_patch(to: ~p"/")
+    |> noreply()
+  end
+
+  def handle_params(_params, _uri, socket), do: noreply(socket)
 
   def handle_event("validate_contact", %{"contact" => params}, socket) do
     params

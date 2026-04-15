@@ -23,6 +23,14 @@ defmodule AppWeb.Router do
     live_session :public,
       on_mount: [{AppWeb.UserAuth, :mount_current_scope}] do
       live "/", HomeLive.Index
+      live "/blog", PublicLive.Blog.Index
+      live "/blog/:slug", PublicLive.Blog.Show
+      live "/para-voce", PublicLive.Pages.ForYou
+      live "/para-seu-negocio", PublicLive.Pages.ForBusiness
+      live "/sobre-nos", PublicLive.Pages.About
+      live "/privacidade", PublicLive.Pages.Privacy
+      live "/termos", PublicLive.Pages.Terms
+      live "/seguranca", PublicLive.Pages.Security
     end
   end
 
@@ -55,8 +63,18 @@ defmodule AppWeb.Router do
 
     live_session :require_authenticated_user,
       on_mount: [{AppWeb.UserAuth, :require_authenticated}] do
+      # Conta e configurações
       live "/users/settings", UserLive.Settings, :edit
       live "/users/settings/confirm-email/:token", UserLive.Settings, :confirm_email
+
+      # Condomínios
+      live "/condominios", AppLive.Condominios.Index, :index
+      live "/condominios/novo", AppLive.Condominios.Index, :new
+
+      # Assembleias & Atas (aninhadas sob condomínio)
+      live "/condominios/:condo_id/assembleias", AppLive.Assembleias.Index, :index
+      live "/condominios/:condo_id/assembleias/nova", AppLive.Assembleias.Index, :new
+      live "/condominios/:condo_id/assembleias/:id", AppLive.Assembleias.Show, :show
     end
 
     post "/users/update-password", UserSessionController, :update_password

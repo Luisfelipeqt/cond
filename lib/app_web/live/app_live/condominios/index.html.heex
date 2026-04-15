@@ -1,0 +1,163 @@
+<Layouts.private_app flash={@flash} current_scope={@current_scope}>
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+    <div>
+      <h1 class="text-2xl font-bold text-base-content">Meus Condomínios</h1>
+      <p class="text-sm text-base-content/50 mt-1">
+        Selecione um condomínio para gerenciar ou adicione um novo.
+      </p>
+    </div>
+    <.link patch={~p"/condominios/novo"} class="btn btn-primary btn-sm shrink-0">
+      <.icon name="hero-plus" class="size-4" />
+      Novo condomínio
+    </.link>
+  </div>
+
+  <%!-- Empty state --%>
+  <div :if={Enum.empty?(@condos)} class="flex flex-col items-center justify-center py-24 text-center">
+    <div class="w-16 h-16 rounded-2xl bg-base-200 flex items-center justify-center mb-4">
+      <.icon name="hero-building-office-2" class="size-8 text-base-content/30" />
+    </div>
+    <h3 class="text-base font-semibold text-base-content mb-1">Nenhum condomínio cadastrado</h3>
+    <p class="text-sm text-base-content/50 max-w-xs mb-6">
+      Cadastre seu primeiro condomínio para começar a usar o síndico.app.
+    </p>
+    <.link patch={~p"/condominios/novo"} class="btn btn-primary btn-sm">
+      <.icon name="hero-plus" class="size-4" />
+      Cadastrar condomínio
+    </.link>
+  </div>
+
+  <%!-- Grid de condomínios --%>
+  <div :if={not Enum.empty?(@condos)} class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <.link
+      :for={condo <- @condos}
+      navigate={~p"/condominios/#{condo.id}/assembleias"}
+      class="card bg-base-100 border border-base-300 hover:border-primary hover:shadow-md transition-all duration-150 cursor-pointer"
+    >
+      <div class="card-body p-5">
+        <div class="flex items-start justify-between gap-2 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <.icon name="hero-building-office-2" class="size-5 text-primary" />
+          </div>
+          <span class="badge badge-ghost badge-xs mt-1">
+            {condo.org && condo.org.name}
+          </span>
+        </div>
+        <h3 class="font-semibold text-base-content">{condo.name}</h3>
+        <p :if={condo.city} class="text-xs text-base-content/50 mt-0.5">
+          {[condo.city, condo.state] |> Enum.reject(&is_nil/1) |> Enum.join(", ")}
+        </p>
+        <p :if={condo.total_units} class="text-xs text-base-content/40 mt-1">
+          {condo.total_units} unidades
+        </p>
+        <div class="mt-3 flex items-center gap-1 text-xs text-primary font-medium">
+          Acessar
+          <.icon name="hero-arrow-right" class="size-3" />
+        </div>
+      </div>
+    </.link>
+  </div>
+</Layouts.private_app>
+
+<%!-- Modal: Novo Condomínio --%>
+<dialog :if={@live_action == :new} id="new-condo-modal" class="modal modal-open" open>
+  <div class="modal-box max-w-lg">
+    <div class="flex items-center justify-between mb-5">
+      <h3 class="text-lg font-bold">Novo Condomínio</h3>
+      <button phx-click="cancel" class="btn btn-ghost btn-sm btn-square">
+        <.icon name="hero-x-mark" class="size-5" />
+      </button>
+    </div>
+
+    <.form
+      for={@form}
+      id="new-condo-form"
+      phx-change="validate"
+      phx-submit="save"
+      class="space-y-4"
+    >
+      <%!-- Dados da organização --%>
+      <div class="divider text-xs text-base-content/40 my-2">Organização</div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div class="col-span-2">
+          <.input
+            field={@form[:name]}
+            type="text"
+            label="Nome do condomínio"
+            placeholder="Condomínio Jardim das Flores"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <.input
+          field={@form[:cnpj]}
+          type="text"
+          label="CNPJ"
+          placeholder="00.000.000/0000-00"
+        />
+        <.input
+          field={@form[:total_units]}
+          type="number"
+          label="Total de unidades"
+          placeholder="48"
+        />
+      </div>
+
+      <%!-- Endereço --%>
+      <div class="divider text-xs text-base-content/40 my-2">Endereço</div>
+
+      <div class="grid grid-cols-3 gap-3">
+        <div class="col-span-2">
+          <.input
+            field={@form[:street]}
+            type="text"
+            label="Rua / Avenida"
+            placeholder="Rua das Palmeiras"
+          />
+        </div>
+        <.input
+          field={@form[:street_number]}
+          type="text"
+          label="Número"
+          placeholder="123"
+        />
+      </div>
+
+      <div class="grid grid-cols-3 gap-3">
+        <div class="col-span-2">
+          <.input
+            field={@form[:city]}
+            type="text"
+            label="Cidade"
+            placeholder="São Luís"
+          />
+        </div>
+        <.input
+          field={@form[:state]}
+          type="text"
+          label="Estado"
+          placeholder="MA"
+        />
+      </div>
+
+      <%!-- Campo oculto para org_name = name e org_type padrão --%>
+      <input type="hidden" name="condo[org_name]" value={Phoenix.HTML.Form.input_value(@form, :name)} />
+      <input type="hidden" name="condo[org_type]" value="owner_managed" />
+
+      <div class="modal-action mt-2">
+        <button type="button" phx-click="cancel" class="btn btn-ghost btn-sm">
+          Cancelar
+        </button>
+        <button type="submit" class="btn btn-primary btn-sm" phx-disable-with="Criando...">
+          Criar condomínio
+        </button>
+      </div>
+    </.form>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button phx-click="cancel">Fechar</button>
+  </form>
+</dialog>

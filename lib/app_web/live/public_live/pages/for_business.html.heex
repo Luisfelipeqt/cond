@@ -1,0 +1,109 @@
+<Layouts.flash_group flash={@flash} />
+<.navbar />
+
+<main id="conteudo">
+  <%!-- HERO --%>
+  <section class="min-h-[60vh] flex items-center py-16 px-5 md:py-24 md:px-6 relative overflow-hidden" aria-labelledby="para-negocio-heading">
+    <div class="absolute inset-0 bg-gradient-to-br from-success/5 via-base-100 to-base-100 pointer-events-none" aria-hidden="true" />
+    <div class="max-w-5xl mx-auto w-full relative">
+      <div class="max-w-2xl">
+        <span class="badge badge-success badge-outline mb-5">Para seu negócio</span>
+        <h1 id="para-negocio-heading" class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-base-content leading-tight tracking-tight mb-5">
+          Escale sua carteira. Não sua equipe.
+        </h1>
+        <p class="text-lg text-base-content/60 leading-relaxed mb-8">
+          Administradoras que usam o síndico.app gerenciam mais condomínios com o mesmo time — processos padronizados, operação centralizada e clientes mais satisfeitos.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <.link navigate={~p"/?to=contato"} class="btn btn-primary btn-lg px-8">Quero uma demonstração</.link>
+          <.link navigate={~p"/para-voce"} class="btn btn-ghost btn-lg">Sou síndico →</.link>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%!-- NÚMEROS --%>
+  <section class="py-12 px-5 md:px-6 bg-base-200/50 border-y border-base-300">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div :for={{number, label} <- [
+          {"2×", "mais condomínios por analista"},
+          {"−60%", "horas em tarefas manuais"},
+          {"100%", "histórico rastreável"},
+          {"1", "painel para toda a carteira"}
+        ]}>
+          <p class="text-3xl sm:text-4xl font-extrabold text-primary">{number}</p>
+          <p class="text-xs sm:text-sm text-base-content/60 mt-1 leading-snug">{label}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%!-- COMO FUNCIONA PARA ADMINISTRADORAS --%>
+  <section class="py-14 px-5 md:py-20 md:px-6" aria-labelledby="como-adm-heading">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 id="como-adm-heading" class="text-2xl sm:text-3xl font-bold text-base-content mb-3">Uma plataforma, toda a carteira</h2>
+        <p class="text-base-content/60 max-w-lg mx-auto text-sm sm:text-base">Do onboarding do novo condomínio à prestação de contas mensal, tudo em um lugar.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div :for={{step, title, desc} <- [
+          {"01", "Cadastro centralizado", "Adicione condomínios, unidades e moradores uma vez. Toda a equipe acessa com permissões por função."},
+          {"02", "Processos padronizados", "Templates de comunicados, atas e relatórios reutilizáveis entre todos os condomínios da carteira."},
+          {"03", "Relatórios automáticos", "Prestação de contas gerada em cliques, por competência e período. Sem planilha, sem retrabalho."}
+        ]} class="card bg-base-100 border border-base-300">
+          <div class="card-body p-6 gap-3">
+            <span class="text-4xl font-black text-primary/15 leading-none">{step}</span>
+            <h3 class="font-bold text-base-content">{title}</h3>
+            <p class="text-sm text-base-content/60 leading-relaxed">{desc}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%!-- DIFERENCIAIS ENTERPRISE --%>
+  <section class="py-14 px-5 md:py-20 md:px-6 bg-base-200/50" aria-labelledby="diferenciais-heading">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 id="diferenciais-heading" class="text-2xl sm:text-3xl font-bold text-base-content mb-3">Feito para quem gerencia em escala</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div :for={{title, desc} <- [
+          {"Painel multi-condomínio", "Visão consolidada de toda a carteira em uma tela — ocorrências abertas, reservas do dia, inadimplência e mais."},
+          {"Controle de acesso por função", "Defina o que cada membro da equipe pode ver e fazer. Separação clara entre gestor, operador e cliente."},
+          {"Fornecedores compartilhados", "Cadastro central de fornecedores com histórico de cotações disponível para toda a carteira."},
+          {"Auditoria e rastreabilidade", "Cada ação registrada com usuário, data e hora. Transparência total para o conselho e para auditorias."},
+          {"Prestação de contas automatizada", "Relatórios por período e competência gerados automaticamente. Clientes recebem no formato que preferem."},
+          {"Suporte prioritário", "Administradoras com plano Enterprise têm acesso a suporte dedicado e onboarding assistido."}
+        ]} class="card bg-base-100 border border-base-300">
+          <div class="card-body p-5 gap-2">
+            <h3 class="font-semibold text-base-content text-sm">{title}</h3>
+            <p class="text-sm text-base-content/60 leading-relaxed">{desc}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%!-- CTA --%>
+  <section class="py-14 px-5 md:py-20 md:px-6 border-t border-base-300">
+    <div class="max-w-2xl mx-auto text-center space-y-5">
+      <h2 class="text-2xl sm:text-3xl font-bold text-base-content">Veja como funciona para a sua operação</h2>
+      <p class="text-base-content/60 text-sm sm:text-base">Mostramos a plataforma com exemplos da sua carteira. Sem script, sem pressão.</p>
+      <.link navigate={~p"/?to=contato"} class="btn btn-primary btn-lg px-8">Falar com a equipe</.link>
+    </div>
+  </section>
+
+  <%!-- FOOTER --%>
+  <footer class="border-t border-base-300 py-8 px-5">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-base-content/40">
+      <.link navigate={~p"/"} class="font-bold text-base-content/60 hover:text-base-content transition-colors">síndico.app</.link>
+      <div class="flex gap-4">
+        <.link navigate={~p"/privacidade"} class="hover:text-base-content transition-colors">Privacidade</.link>
+        <.link navigate={~p"/termos"} class="hover:text-base-content transition-colors">Termos</.link>
+        <.link navigate={~p"/seguranca"} class="hover:text-base-content transition-colors">Segurança</.link>
+      </div>
+    </div>
+  </footer>
+</main>

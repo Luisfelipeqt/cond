@@ -1,0 +1,153 @@
+<Layouts.flash_group flash={@flash} />
+
+<.navbar />
+
+<main id="conteudo">
+  <article aria-labelledby="article-heading">
+    <%!-- ARTICLE HEADER --%>
+    <header class="py-14 px-5 md:py-20 md:px-6 border-b border-base-300">
+      <div class="max-w-3xl mx-auto">
+        <%!-- Back link --%>
+        <div class="mb-8">
+          <.link
+            navigate={~p"/blog"}
+            class="inline-flex items-center gap-1.5 text-sm text-base-content/50 hover:text-base-content transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+            Voltar para o blog
+          </.link>
+        </div>
+
+        <%!-- Tag + meta --%>
+        <div class="flex flex-wrap items-center gap-3 mb-5">
+          <span class={"badge badge-sm font-semibold uppercase tracking-wider border-0 #{@post.cover_color}"}>
+            {@post.tag}
+          </span>
+          <div class="flex items-center gap-2 text-xs text-base-content/40">
+            <time datetime={@post.published_at}>
+              {App.Blog.format_date(@post.published_at)}
+            </time>
+            <span aria-hidden="true">·</span>
+            <span>{@post.read_time} min de leitura</span>
+            <span aria-hidden="true">·</span>
+            <span>{@post.author}</span>
+          </div>
+        </div>
+
+        <%!-- Title --%>
+        <h1
+          id="article-heading"
+          class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-base-content leading-tight tracking-tight mb-5"
+        >
+          {@post.title}
+        </h1>
+
+        <%!-- Excerpt --%>
+        <p class="text-base sm:text-lg text-base-content/60 leading-relaxed border-l-4 border-primary/30 pl-4">
+          {@post.excerpt}
+        </p>
+      </div>
+    </header>
+
+    <%!-- ARTICLE BODY --%>
+    <div class="py-12 px-5 md:py-16 md:px-6">
+      <div class="max-w-3xl mx-auto prose-custom">
+        <div :for={block <- @post.body} class="mb-6">
+          <%= case block do %>
+            <% {:h2, text} -> %>
+              <h2 class="text-xl sm:text-2xl font-bold text-base-content mt-10 mb-4 leading-snug">
+                {text}
+              </h2>
+            <% {:p, text} -> %>
+              <p class="text-base text-base-content/75 leading-relaxed">
+                {text}
+              </p>
+            <% {:blockquote, text} -> %>
+              <blockquote class="my-8 border-l-4 border-primary bg-primary/5 rounded-r-xl px-5 py-4">
+                <p class="text-base-content/80 italic leading-relaxed text-sm sm:text-base">
+                  {text}
+                </p>
+              </blockquote>
+            <% {:ul, items} -> %>
+              <ul class="space-y-2 my-4" role="list">
+                <li
+                  :for={item <- items}
+                  class="flex items-start gap-3 text-sm sm:text-base text-base-content/75"
+                >
+                  <span
+                    class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      class="w-3 h-3 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                  {item}
+                </li>
+              </ul>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <%!-- CTA --%>
+  <section class="py-14 px-5 md:py-20 md:px-6 bg-base-200/50 border-t border-base-300">
+    <div class="max-w-2xl mx-auto text-center space-y-5">
+      <div
+        class="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-1.5 mb-2 text-xs font-semibold uppercase tracking-widest"
+        aria-hidden="true"
+      >
+        Próximo passo
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-bold text-base-content">
+        Veja como isso funciona na prática
+      </h2>
+      <p class="text-base-content/60 text-sm sm:text-base max-w-md mx-auto">
+        Nossa equipe pode apresentar a plataforma com exemplos da sua realidade operacional. Sem script, sem pressão.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <.link
+          navigate={~p"/?to=contato"}
+          class="btn btn-primary btn-lg px-8"
+        >
+          Falar com a equipe
+        </.link>
+        <.link
+          navigate={~p"/blog"}
+          class="btn btn-ghost btn-lg"
+        >
+          ← Ver mais artigos
+        </.link>
+      </div>
+    </div>
+  </section>
+
+  <%!-- FOOTER simples --%>
+  <footer class="border-t border-base-300 py-8 px-5">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-base-content/40">
+      <.link navigate={~p"/"} class="font-bold text-base-content/60 hover:text-base-content transition-colors">
+        síndico.app
+      </.link>
+      <p>© {Date.utc_today().year} síndico.app — Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</main>

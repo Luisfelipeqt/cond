@@ -23,6 +23,7 @@ defmodule App.Condo.Condo do
     has_many :common_areas, App.Condo.CommonArea
     has_many :generated_documents, App.Documents.GeneratedDocument, foreign_key: :condo_id
     has_many :quote_requests, App.Quotation.QuoteRequest, foreign_key: :condo_id
+    has_many :meetings, App.Assembly.Meeting, foreign_key: :condo_id
 
     timestamps(type: :utc_datetime)
   end

@@ -1,0 +1,112 @@
+<Layouts.flash_group flash={@flash} />
+<.navbar />
+
+<main id="conteudo">
+  <section class="py-16 px-5 md:py-20 md:px-6 border-b border-base-300">
+    <div class="max-w-3xl mx-auto">
+      <span class="badge badge-ghost mb-5">Legal</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-base-content mb-3">Segurança</h1>
+      <p class="text-base text-base-content/60 leading-relaxed max-w-xl">
+        A segurança dos dados dos seus condôminos é uma responsabilidade que levamos a sério. Veja como protegemos as informações confiadas à plataforma.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 px-5 md:py-16 md:px-6">
+    <div class="max-w-3xl mx-auto space-y-10">
+
+      <%!-- Pilares --%>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div :for={{icon_path, title, desc} <- [
+          {"M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z",
+           "Criptografia", "Dados em trânsito protegidos por TLS 1.2+. Dados sensíveis em repouso criptografados com AES-256."},
+          {"M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z",
+           "Infraestrutura", "Hospedagem em data centers com certificação SOC 2. Backups diários com retenção de 30 dias."},
+          {"M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z",
+           "Autenticação", "Senhas com hash bcrypt. Sessões com expiração automática. Suporte a autenticação por magic link."}
+        ]} class="card bg-base-100 border border-base-300 text-center">
+          <div class="card-body p-6 items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+              <svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d={icon_path} />
+              </svg>
+            </div>
+            <h2 class="font-bold text-base-content">{title}</h2>
+            <p class="text-sm text-base-content/60 leading-relaxed">{desc}</p>
+          </div>
+        </div>
+      </div>
+
+      <%!-- Práticas detalhadas --%>
+      <div class="space-y-8 text-base text-base-content/70 leading-relaxed">
+        <div>
+          <h2 class="text-lg font-bold text-base-content mb-3">Controle de acesso</h2>
+          <ul class="space-y-2">
+            <li :for={item <- [
+              "Permissões granulares por função: administrador, operador, morador",
+              "Cada usuário acessa apenas os condomínios e dados aos quais foi explicitamente autorizado",
+              "Log de auditoria completo: cada ação registrada com usuário, IP e timestamp",
+              "Sessões encerradas automaticamente após inatividade"
+            ]} class="flex items-start gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" aria-hidden="true"></span>
+              <span>{item}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-base-content mb-3">Desenvolvimento seguro</h2>
+          <ul class="space-y-2">
+            <li :for={item <- [
+              "Revisão de código obrigatória antes de qualquer deploy em produção",
+              "Dependências monitoradas para vulnerabilidades conhecidas (CVE)",
+              "Testes automatizados de regressão e segurança no pipeline de CI/CD",
+              "Ambiente de produção isolado do ambiente de desenvolvimento"
+            ]} class="flex items-start gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" aria-hidden="true"></span>
+              <span>{item}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-base-content mb-3">Resposta a incidentes</h2>
+          <p class="mb-3">Em caso de incidente de segurança que afete dados pessoais:</p>
+          <ul class="space-y-2">
+            <li :for={item <- [
+              "Notificação aos usuários afetados em até 72 horas após confirmação",
+              "Comunicação à Autoridade Nacional de Proteção de Dados (ANPD) quando aplicável",
+              "Relatório de análise de causa-raiz disponibilizado aos clientes Enterprise"
+            ]} class="flex items-start gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" aria-hidden="true"></span>
+              <span>{item}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card bg-base-200/50 border border-base-300">
+          <div class="card-body p-6">
+            <h2 class="text-lg font-bold text-base-content mb-2">Divulgação responsável</h2>
+            <p class="text-sm text-base-content/70 leading-relaxed">
+              Encontrou uma vulnerabilidade? Entre em contato antes de divulgar publicamente. Trabalhamos com pesquisadores de segurança de forma responsável e reconhecemos contribuições válidas.
+            </p>
+            <p class="mt-3 text-sm font-medium text-base-content/80">seguranca@sindico.app</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <%!-- FOOTER --%>
+  <footer class="border-t border-base-300 py-8 px-5">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-base-content/40">
+      <.link navigate={~p"/"} class="font-bold text-base-content/60 hover:text-base-content transition-colors">síndico.app</.link>
+      <div class="flex gap-4">
+        <.link navigate={~p"/privacidade"} class="hover:text-base-content transition-colors">Privacidade</.link>
+        <.link navigate={~p"/termos"} class="hover:text-base-content transition-colors">Termos</.link>
+        <.link navigate={~p"/seguranca"} class="text-primary">Segurança</.link>
+      </div>
+    </div>
+  </footer>
+</main>
