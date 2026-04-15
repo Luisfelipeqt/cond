@@ -1,0 +1,52 @@
+<%!-- DEPOIMENTOS --%>
+<section
+  class="py-14 px-5 md:py-24 md:px-6 bg-base-200/50"
+  aria-labelledby="depoimentos-heading"
+>
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-10 md:mb-14">
+      <h2
+        id="depoimentos-heading"
+        class="text-2xl sm:text-3xl md:text-4xl font-bold text-base-content mb-3"
+      >
+        Quem já está testando, aprovou.
+      </h2>
+      <p class="text-base-content/60 max-w-md mx-auto text-sm sm:text-base">
+        Feedbacks de síndicos e administradoras que participaram do nosso beta fechado.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div
+        :for={
+          {initials, name, role, quote} <- [
+            {"MS", "Maria Santos", "Síndica Profissional · São Paulo, SP",
+             "Reduzi pelo menos 3 horas por semana só nas comunicações. Agora tudo fica registrado e os moradores não podem mais dizer que não foram avisados."},
+            {"CO", "Carlos Oliveira", "Administradora Oliveira Gestão · Rio de Janeiro, RJ",
+             "Antes eu tinha 4 grupos de WhatsApp por prédio. Agora tudo fica no sistema e minha equipe consegue acompanhar em tempo real, de qualquer lugar."},
+            {"AL", "Ana Lima", "Síndica Profissional · Belo Horizonte, MG",
+             "A parte de cotações mudou tudo. Mando o link para o fornecedor e recebo a proposta formatada diretamente no sistema. Simples assim."}
+          ]
+        }
+        class="card bg-base-100 border border-base-300"
+      >
+        <div class="card-body p-6 md:p-8 gap-4">
+          <div class="flex gap-0.5" role="img" aria-label="Avaliação: 5 de 5 estrelas">
+            <span :for={_ <- 1..5} class="text-warning" aria-hidden="true">★</span>
+          </div>
+          <p class="text-sm text-base-content/70 leading-relaxed italic">"{quote}"</p>
+          <div class="flex items-center gap-3 mt-auto pt-2">
+            <div class="avatar placeholder" aria-hidden="true">
+              <div class="bg-primary/10 text-primary rounded-full w-10 h-10">
+                <span class="text-sm font-bold">{initials}</span>
+              </div>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-base-content">{name}</p>
+              <p class="text-xs text-base-content/50">{role}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

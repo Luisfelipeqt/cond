@@ -1,0 +1,62 @@
+<%!-- DOR --%>
+<section class="py-14 px-5 md:py-24 md:px-6 bg-base-200/50" aria-labelledby="dor-heading">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-10 md:mb-14">
+      <h2
+        id="dor-heading"
+        class="text-2xl sm:text-3xl md:text-4xl font-bold text-base-content mb-4"
+      >
+        Isso parece familiar?
+      </h2>
+      <p class="text-base-content/60 max-w-xl mx-auto text-sm sm:text-base">
+        A maioria dos síndicos e administradoras ainda opera com as mesmas ferramentas de dez anos atrás.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="card bg-base-100 border border-base-300">
+        <div class="card-body p-6 md:p-7 gap-3">
+          <div class="text-3xl" aria-hidden="true">💬</div>
+          <h3 class="text-base md:text-lg font-bold text-base-content">
+            "O grupo de WhatsApp tem 300 mensagens por dia."
+          </h3>
+          <p class="text-sm text-base-content/60 leading-relaxed">
+            Comunicados se perdem entre fotos e reclamações. Moradores dizem que não foram avisados. Você passa horas reenviando informações.
+          </p>
+        </div>
+      </div>
+      <div class="card bg-base-100 border border-base-300">
+        <div class="card-body p-6 md:p-7 gap-3">
+          <div class="text-3xl" aria-hidden="true">📊</div>
+          <h3 class="text-base md:text-lg font-bold text-base-content">
+            "Tenho 8 planilhas diferentes para 8 condomínios."
+          </h3>
+          <p class="text-sm text-base-content/60 leading-relaxed">
+            Cada prédio com sua própria lógica, seu próprio arquivo. Qualquer mudança vira um projeto. Prestar contas então, nem se fala.
+          </p>
+        </div>
+      </div>
+      <div class="card bg-base-100 border border-base-300">
+        <div class="card-body p-6 md:p-7 gap-3">
+          <div class="text-3xl" aria-hidden="true">📋</div>
+          <h3 class="text-base md:text-lg font-bold text-base-content">
+            "Cotações? Ainda por e-mail e sem comparativo."
+          </h3>
+          <p class="text-sm text-base-content/60 leading-relaxed">
+            Pede proposta por e-mail, espera dias, recebe em formatos diferentes, tenta comparar manualmente. O mesmo ciclo todo mês.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-8">
+      <p class="text-base-content/60 font-medium text-sm sm:text-base">
+        Existe uma forma melhor.
+        <button
+          phx-click={JS.dispatch("smooth-scroll", detail: %{id: "plataforma"})}
+          class="text-primary font-semibold hover:underline"
+        >
+          Veja como →
+        </button>
+      </p>
+    </div>
+  </div>
+</section>

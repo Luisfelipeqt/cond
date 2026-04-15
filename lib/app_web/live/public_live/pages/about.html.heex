@@ -1,0 +1,126 @@
+<Layouts.flash_group flash={@flash} />
+<.navbar />
+
+<main id="conteudo">
+  <%!-- HERO --%>
+  <section class="py-16 px-5 md:py-24 md:px-6 border-b border-base-300">
+    <div class="max-w-3xl mx-auto">
+      <span class="badge badge-primary badge-outline mb-5">Sobre nós</span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-base-content leading-tight tracking-tight mb-5">
+        Construído por quem entende o problema.
+      </h1>
+      <p class="text-lg text-base-content/60 leading-relaxed">
+        O síndico.app nasceu da frustração de ver síndicos e administradoras operando com ferramentas inadequadas para o tamanho do problema que enfrentam. WhatsApp, planilha e e-mail não foram feitos para gestão de condomínio — e o mercado merecia algo melhor.
+      </p>
+    </div>
+  </section>
+
+  <%!-- MISSÃO E HISTÓRIA --%>
+  <section class="py-14 px-5 md:py-20 md:px-6">
+    <div class="max-w-3xl mx-auto space-y-14">
+      <div>
+        <h2 class="text-xl sm:text-2xl font-bold text-base-content mb-4">Nossa missão</h2>
+        <p class="text-base text-base-content/70 leading-relaxed">
+          Tornar a gestão de condomínios rastreável, transparente e escalável — para que síndicos e administradoras passem menos tempo apagando incêndio e mais tempo entregando valor real para quem mora.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl sm:text-2xl font-bold text-base-content mb-4">
+          Por que construímos isso
+        </h2>
+        <div class="space-y-4 text-base text-base-content/70 leading-relaxed">
+          <p>
+            O mercado de gestão condominial brasileiro movimenta bilhões de reais por ano, envolve milhões de famílias e ainda opera, em grande parte, com as mesmas ferramentas de vinte anos atrás.
+          </p>
+          <p>
+            Vimos síndicos profissionais gerenciando 15 prédios por grupos de WhatsApp e planilhas duplicadas. Vimos administradoras com time de 5 pessoas que poderiam atender o dobro de clientes com os processos certos. Vimos moradores sem visibilidade alguma sobre o que acontece no seu próprio condomínio.
+          </p>
+          <p>
+            O síndico.app existe para mudar isso — com software bem feito, foco no problema real e respeito pelo tempo de quem usa.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl sm:text-2xl font-bold text-base-content mb-6">O que nos guia</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div
+            :for={
+              {title, desc} <- [
+                {"Clareza acima de tudo",
+                 "Interfaces que qualquer pessoa usa sem treinamento. Dados apresentados de forma que fazem sentido, não só que são tecnicamente corretos."},
+                {"Operação sem surpresas",
+                 "Sistemas que funcionam quando você precisa. Dados que estão lá quando você procura. Histórico que nunca some."},
+                {"Crescimento responsável",
+                 "Não vendemos o que não entregamos. Crescemos junto com os clientes, no ritmo que a operação deles permite."},
+                {"Privacidade como padrão",
+                 "Dados dos seus condôminos são seus — não os vendemos, não os compartilhamos, não os usamos para fins além do serviço contratado."}
+              ]
+            }
+            class="card bg-base-100 border border-base-300"
+          >
+            <div class="card-body p-5 gap-2">
+              <h3 class="font-semibold text-base-content">{title}</h3>
+              <p class="text-sm text-base-content/60 leading-relaxed">{desc}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-base-200/50 border border-base-300">
+        <div class="card-body p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-base-content mb-4">Informações legais</h2>
+          <div class="space-y-2 text-sm text-base-content/60">
+            <p>
+              <span class="font-medium text-base-content/80">Empresa:</span>
+              síndico.app — CNPJ em processo de abertura
+            </p>
+            <p><span class="font-medium text-base-content/80">País:</span> Brasil</p>
+            <p>
+              <span class="font-medium text-base-content/80">Contato:</span> contato@sindico.app
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%!-- CTA --%>
+  <section class="py-14 px-5 md:py-20 md:px-6 bg-base-200/50 border-t border-base-300">
+    <div class="max-w-2xl mx-auto text-center space-y-5">
+      <h2 class="text-2xl sm:text-3xl font-bold text-base-content">
+        Quer conhecer a plataforma?
+      </h2>
+      <p class="text-base-content/60 text-sm sm:text-base">
+        Nossa equipe mostra tudo em uma conversa rápida. Sem compromisso.
+      </p>
+      <.link navigate={~p"/?to=contato"} class="btn btn-primary btn-lg px-8">
+        Falar com a equipe
+      </.link>
+    </div>
+  </section>
+
+  <%!-- FOOTER --%>
+  <footer class="border-t border-base-300 py-8 px-5">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-base-content/40">
+      <.link
+        navigate={~p"/"}
+        class="font-bold text-base-content/60 hover:text-base-content transition-colors"
+      >
+        síndico.app
+      </.link>
+      <div class="flex gap-4">
+        <.link navigate={~p"/privacidade"} class="hover:text-base-content transition-colors">
+          Privacidade
+        </.link>
+        <.link navigate={~p"/termos"} class="hover:text-base-content transition-colors">
+          Termos
+        </.link>
+        <.link navigate={~p"/seguranca"} class="hover:text-base-content transition-colors">
+          Segurança
+        </.link>
+      </div>
+    </div>
+  </footer>
+</main>

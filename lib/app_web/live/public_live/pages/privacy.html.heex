@@ -1,0 +1,169 @@
+<Layouts.flash_group flash={@flash} />
+<.navbar />
+
+<main id="conteudo">
+  <section class="py-16 px-5 md:py-20 md:px-6 border-b border-base-300">
+    <div class="max-w-3xl mx-auto">
+      <span class="badge badge-ghost mb-5">Legal</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-base-content mb-3">
+        Política de Privacidade
+      </h1>
+      <p class="text-sm text-base-content/50">Última atualização: abril de 2026</p>
+    </div>
+  </section>
+
+  <section class="py-12 px-5 md:py-16 md:px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="space-y-10 text-base text-base-content/70 leading-relaxed">
+        <div>
+          <h2 class="text-lg font-bold text-base-content mb-3">1. Quem somos</h2>
+          <p>
+            O síndico.app é uma plataforma de gestão de condomínios desenvolvida e operada no Brasil. Neste documento, "nós", "nosso" e "síndico.app" se referem à empresa responsável pela plataforma.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-base-content mb-3">2. Quais dados coletamos</h2>
+          <ul class="space-y-2">
+            <li
+              :for={
+                item <- [
+                  "Dados de cadastro: nome, e-mail, telefone e CPF fornecidos ao criar conta ou ao preencher o formulário de contato",
+                  "Dados de uso: páginas visitadas, ações realizadas na plataforma, data e hora de acesso",
+                  "Dados do condomínio: informações inseridas pelo síndico ou administradora sobre unidades, moradores e operações",
+                  "Dados técnicos: endereço IP, tipo de navegador, sistema operacional"
+                ]
+              }
+              class="flex items-start gap-2.5"
+            >
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2"
+                aria-hidden="true"
+              >
+              </span>
+              <span>{item}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-base-content mb-3">3. Como usamos seus dados</h2>
+          <ul class="space-y-2">
+            <li
+              :for={
+                item <- [
+                  "Fornecer e operar a plataforma conforme contratado",
+                  "Entrar em contato quando solicitado via formulário",
+                  "Enviar comunicações relacionadas ao serviço (atualizações, alertas de segurança)",
+                  "Melhorar a plataforma com base em padrões de uso agregados e anonimizados",
+                  "Cumprir obrigações legais e regulatórias"
+                ]
+              }
+              class="flex items-start gap-2.5"
+            >
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2"
+                aria-hidden="true"
+              >
+              </span>
+              <span>{item}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-base-content mb-3">4. Compartilhamento de dados</h2>
+          <p class="mb-3">
+            Não vendemos, alugamos ou comercializamos seus dados pessoais. Podemos compartilhá-los apenas:
+          </p>
+          <ul class="space-y-2">
+            <li
+              :for={
+                item <- [
+                  "Com prestadores de serviço tecnológico que operam sob contrato de confidencialidade (hospedagem, infraestrutura)",
+                  "Quando exigido por lei, ordem judicial ou autoridade competente",
+                  "Com seu consentimento explícito para finalidade específica"
+                ]
+              }
+              class="flex items-start gap-2.5"
+            >
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2"
+                aria-hidden="true"
+              >
+              </span>
+              <span>{item}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-base-content mb-3">5. Seus direitos (LGPD)</h2>
+          <p class="mb-3">
+            Nos termos da Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você tem direito a:
+          </p>
+          <ul class="space-y-2">
+            <li
+              :for={
+                item <- [
+                  "Confirmar a existência de tratamento dos seus dados",
+                  "Acessar seus dados pessoais",
+                  "Corrigir dados incompletos, inexatos ou desatualizados",
+                  "Solicitar a portabilidade ou exclusão dos seus dados",
+                  "Revogar o consentimento dado anteriormente"
+                ]
+              }
+              class="flex items-start gap-2.5"
+            >
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2"
+                aria-hidden="true"
+              >
+              </span>
+              <span>{item}</span>
+            </li>
+          </ul>
+          <p class="mt-3">
+            Para exercer seus direitos, entre em contato:
+            <span class="font-medium text-base-content/90">privacidade@sindico.app</span>
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-base-content mb-3">6. Retenção de dados</h2>
+          <p>
+            Mantemos seus dados enquanto a conta estiver ativa ou pelo prazo necessário ao cumprimento de obrigações legais. Dados de formulário de contato são retidos por até 2 anos.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-base-content mb-3">7. Alterações nesta política</h2>
+          <p>
+            Podemos atualizar esta política periodicamente. Notificaremos usuários ativos por e-mail sobre mudanças relevantes com pelo menos 15 dias de antecedência.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%!-- FOOTER --%>
+  <footer class="border-t border-base-300 py-8 px-5">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-base-content/40">
+      <.link
+        navigate={~p"/"}
+        class="font-bold text-base-content/60 hover:text-base-content transition-colors"
+      >
+        síndico.app
+      </.link>
+      <div class="flex gap-4">
+        <.link navigate={~p"/privacidade"} class="text-primary">Privacidade</.link>
+        <.link navigate={~p"/termos"} class="hover:text-base-content transition-colors">
+          Termos
+        </.link>
+        <.link navigate={~p"/seguranca"} class="hover:text-base-content transition-colors">
+          Segurança
+        </.link>
+      </div>
+    </div>
+  </footer>
+</main>

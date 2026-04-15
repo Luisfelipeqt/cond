@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title default="" suffix=" · Gestão de Condomínios">
+      {assigns[:page_title]}
+    </.live_title>
+    <link phx-track-static rel="stylesheet" href={~p"/assets/css/app.css"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/js/app.js"}>
+    </script>
+    <script>
+      (() => {
+        const setTheme = (theme) => {
+          if (theme === "system") {
+            localStorage.removeItem("phx:theme");
+            document.documentElement.removeAttribute("data-theme");
+          } else {
+            localStorage.setItem("phx:theme", theme);
+            document.documentElement.setAttribute("data-theme", theme);
+          }
+        };
+        if (!document.documentElement.hasAttribute("data-theme")) {
+          setTheme(localStorage.getItem("phx:theme") || "system");
+        }
+        window.addEventListener("storage", (e) => e.key === "phx:theme" && setTheme(e.newValue || "system"));
+        window.addEventListener("phx:set-theme", (e) => setTheme(e.target.dataset.phxTheme));
+      })();
+    </script>
+  </head>
+  <body class="antialiased">
+    {@inner_content}
+    <script>
+      // Smooth scroll via phx-click dispatch (home page section buttons)
+      document.addEventListener("smooth-scroll", (e) => {
+        const el = document.getElementById(e.detail.id);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      // Smooth scroll via server push_event (cross-page navigation)
+      window.addEventListener("phx:scroll-to", (e) => {
+        const el = document.getElementById(e.detail.id);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    </script>
+  </body>
+</html>

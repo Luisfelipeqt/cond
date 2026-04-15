@@ -1,0 +1,523 @@
+<Layouts.private_app flash={@flash} current_scope={@current_scope} condo={@condo}>
+  <%!-- Breadcrumb --%>
+  <div class="text-sm breadcrumbs text-base-content/50 mb-6">
+    <ul>
+      <li><.link navigate={~p"/condominios/#{@condo_id}/assembleias"}>Assembleias</.link></li>
+      <li class="text-base-content">{@meeting.title}</li>
+    </ul>
+  </div>
+
+  <%!-- Header da assembleia --%>
+  <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4 mb-8">
+    <div class="space-y-2">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="badge badge-ghost badge-sm font-mono">
+          {meeting_type_label(@meeting.type)}
+        </span>
+        <span class={["badge badge-sm", meeting_status_class(@meeting.status)]}>
+          {meeting_status_label(@meeting.status)}
+        </span>
+      </div>
+      <h1 class="text-2xl font-bold text-base-content">{@meeting.title}</h1>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-base-content/50">
+        <span class="flex items-center gap-1.5">
+          <.icon name="hero-calendar" class="size-4" />
+          {Calendar.strftime(@meeting.scheduled_at, "%d/%m/%Y às %H:%M")}
+        </span>
+        <span :if={@meeting.location} class="flex items-center gap-1.5">
+          <.icon name="hero-map-pin" class="size-4" />
+          {@meeting.location}
+        </span>
+        <span class="flex items-center gap-1.5">
+          <.icon name="hero-user-group" class="size-4" />
+          {quorum_type_label(@meeting.quorum_type)}
+        </span>
+      </div>
+    </div>
+
+    <%!-- Action: avançar status --%>
+    <div :if={@meeting.status not in ["registered", "cancelled"]} class="shrink-0">
+      <button phx-click="advance_status" class="btn btn-primary btn-sm">
+        <.icon name="hero-arrow-right" class="size-4" />
+        {case @meeting.status do
+          "scheduled" -> "Marcar como realizada"
+          "held" -> "Gerar rascunho da ata"
+          "minutes_draft" -> "Aprovar ata"
+          "minutes_approved" -> "Registrar em cartório"
+          _ -> ""
+        end}
+      </button>
+    </div>
+  </div>
+
+  <%!-- Stats rápidos --%>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+    <div class="stat bg-base-200 rounded-xl p-4">
+      <div class="stat-title text-xs">Itens de pauta</div>
+      <div class="stat-value text-2xl">{length(@meeting.agenda_items)}</div>
+    </div>
+    <div class="stat bg-base-200 rounded-xl p-4">
+      <div class="stat-title text-xs">Presenças</div>
+      <div class="stat-value text-2xl">{@quorum.total_units_present}</div>
+    </div>
+    <div class="stat bg-base-200 rounded-xl p-4">
+      <div class="stat-title text-xs">Quórum</div>
+      <div class="stat-value text-2xl">{@quorum.quorum_percentage}%</div>
+    </div>
+    <div class="stat bg-base-200 rounded-xl p-4">
+      <div class="stat-title text-xs">Deliberações</div>
+      <div class="stat-value text-2xl">
+        {Enum.count(@meeting.agenda_items, &(&1.resolution != nil))}
+      </div>
+    </div>
+  </div>
+
+  <%!-- Tabs --%>
+  <div role="tablist" class="tabs tabs-border mb-6">
+    <.link
+      patch={~p"/condominios/#{@condo_id}/assembleias/#{@meeting.id}?tab=pauta"}
+      role="tab"
+      class={["tab", @tab == "pauta" && "tab-active"]}
+    >
+      <.icon name="hero-list-bullet" class="size-4 mr-1.5" /> Pauta
+    </.link>
+    <.link
+      patch={~p"/condominios/#{@condo_id}/assembleias/#{@meeting.id}?tab=presenca"}
+      role="tab"
+      class={["tab", @tab == "presenca" && "tab-active"]}
+    >
+      <.icon name="hero-user-group" class="size-4 mr-1.5" /> Presença & Quórum
+    </.link>
+    <.link
+      patch={~p"/condominios/#{@condo_id}/assembleias/#{@meeting.id}?tab=deliberacoes"}
+      role="tab"
+      class={["tab", @tab == "deliberacoes" && "tab-active"]}
+    >
+      <.icon name="hero-check-badge" class="size-4 mr-1.5" /> Deliberações
+    </.link>
+    <.link
+      patch={~p"/condominios/#{@condo_id}/assembleias/#{@meeting.id}?tab=ata"}
+      role="tab"
+      class={["tab", @tab == "ata" && "tab-active"]}
+    >
+      <.icon name="hero-document-text" class="size-4 mr-1.5" /> Ata
+    </.link>
+  </div>
+
+  <%!-- ══════════════════ TAB: PAUTA ══════════════════ --%>
+  <div :if={@tab == "pauta"}>
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="font-semibold text-base-content">Itens da pauta</h2>
+      <button phx-click="new_agenda_item" class="btn btn-outline btn-sm">
+        <.icon name="hero-plus" class="size-4" /> Adicionar item
+      </button>
+    </div>
+
+    <%!-- Formulário inline: novo item --%>
+    <div :if={@agenda_item_form} class="card bg-base-200 border border-base-300 mb-4">
+      <div class="card-body p-4">
+        <h3 class="font-medium text-sm mb-3">Novo item de pauta</h3>
+        <.form
+          for={@agenda_item_form}
+          id="agenda-item-form"
+          phx-change="validate_agenda_item"
+          phx-submit="save_agenda_item"
+          class="space-y-3"
+        >
+          <div class="grid grid-cols-3 gap-3">
+            <.input
+              field={@agenda_item_form[:order]}
+              type="number"
+              label="Ordem"
+              placeholder={length(@meeting.agenda_items) + 1}
+            />
+            <div class="col-span-2">
+              <.input
+                field={@agenda_item_form[:item_type]}
+                type="select"
+                label="Tipo"
+                options={[{"Deliberativo", "deliberative"}, {"Informativo", "informational"}]}
+              />
+            </div>
+          </div>
+          <.input
+            field={@agenda_item_form[:title]}
+            type="text"
+            label="Título"
+            placeholder="Aprovação das contas de 2025"
+            required
+          />
+          <.input
+            field={@agenda_item_form[:description]}
+            type="textarea"
+            label="Descrição"
+            placeholder="Detalhamento do item (opcional)"
+            rows={2}
+          />
+          <div class="flex justify-end gap-2">
+            <button type="button" phx-click="cancel_agenda_item" class="btn btn-ghost btn-xs">
+              Cancelar
+            </button>
+            <button type="submit" class="btn btn-primary btn-xs" phx-disable-with="Salvando...">
+              Adicionar
+            </button>
+          </div>
+        </.form>
+      </div>
+    </div>
+
+    <%!-- Lista de itens --%>
+    <div
+      :if={Enum.empty?(@meeting.agenda_items)}
+      class="py-12 text-center text-base-content/40 text-sm"
+    >
+      Nenhum item adicionado à pauta ainda.
+    </div>
+
+    <div class="space-y-2">
+      <div
+        :for={item <- Enum.sort_by(@meeting.agenda_items, & &1.order)}
+        class="card bg-base-100 border border-base-300 shadow-none hover:border-base-content/20 transition-colors"
+      >
+        <div class="card-body p-4 flex-row items-start gap-4">
+          <div class="w-8 h-8 rounded-lg bg-base-200 flex items-center justify-center text-sm font-bold text-base-content/40 shrink-0">
+            {item.order}
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-0.5">
+              <span class="font-medium text-sm text-base-content">{item.title}</span>
+              <span class="badge badge-ghost badge-xs">{item_type_label(item.item_type)}</span>
+              <span class="badge badge-xs badge-outline">{item_status_label(item.status)}</span>
+            </div>
+            <p :if={item.description} class="text-xs text-base-content/50 mt-0.5 line-clamp-2">
+              {item.description}
+            </p>
+          </div>
+          <button
+            phx-click="remove_agenda_item"
+            phx-value-id={item.id}
+            data-confirm="Remover este item da pauta?"
+            class="btn btn-ghost btn-xs text-error opacity-50 hover:opacity-100 shrink-0"
+          >
+            <.icon name="hero-trash" class="size-3.5" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%!-- ══════════════════ TAB: PRESENÇA & QUÓRUM ══════════════════ --%>
+  <div :if={@tab == "presenca"}>
+    <%!-- Card de quórum --%>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+      <div class="card bg-base-200 border border-base-300">
+        <div class="card-body p-4 text-center">
+          <div class="text-3xl font-bold text-primary">{@quorum.quorum_percentage}%</div>
+          <div class="text-xs text-base-content/50 mt-1">Fração ideal presente</div>
+        </div>
+      </div>
+      <div class="card bg-base-200 border border-base-300">
+        <div class="card-body p-4 text-center">
+          <div class="text-3xl font-bold">{@quorum.total_units_present}</div>
+          <div class="text-xs text-base-content/50 mt-1">
+            de {@quorum.total_units} unidades presentes
+          </div>
+        </div>
+      </div>
+      <div class={[
+        "card border-2",
+        if(@quorum.has_simple_quorum,
+          do: "border-success bg-success/5",
+          else: "border-error bg-error/5"
+        )
+      ]}>
+        <div class="card-body p-4 text-center">
+          <div class={[
+            "text-3xl font-bold",
+            if(@quorum.has_simple_quorum, do: "text-success", else: "text-error")
+          ]}>
+            {if @quorum.has_simple_quorum, do: "✓", else: "✗"}
+          </div>
+          <div class="text-xs text-base-content/50 mt-1">
+            {quorum_type_label(@meeting.quorum_type)}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%!-- Lista de presentes --%>
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="font-semibold text-base-content">Lista de presença</h2>
+      <button class="btn btn-outline btn-sm" disabled>
+        <.icon name="hero-plus" class="size-4" /> Registrar presença
+      </button>
+    </div>
+
+    <div
+      :if={Enum.empty?(@meeting.attendances)}
+      class="py-12 text-center text-base-content/40 text-sm"
+    >
+      Nenhuma presença registrada ainda.
+    </div>
+
+    <div
+      :if={not Enum.empty?(@meeting.attendances)}
+      class="overflow-x-auto rounded-xl border border-base-300"
+    >
+      <table class="table table-sm">
+        <thead>
+          <tr class="text-xs text-base-content/50 uppercase tracking-wide">
+            <th>Unidade</th>
+            <th>Condômino</th>
+            <th>Tipo</th>
+            <th>Assinou</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr :for={att <- @meeting.attendances} class="hover">
+            <td class="font-mono text-sm">{att.unit.number}</td>
+            <td>{att.user.email}</td>
+            <td>
+              <span class={[
+                "badge badge-xs",
+                if(att.proxy_id, do: "badge-warning", else: "badge-ghost")
+              ]}>
+                {if att.proxy_id, do: "Procurador", else: "Titular"}
+              </span>
+            </td>
+            <td class="text-xs text-base-content/50">
+              {if att.signed_at, do: Calendar.strftime(att.signed_at, "%H:%M"), else: "—"}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <%!-- ══════════════════ TAB: DELIBERAÇÕES ══════════════════ --%>
+  <div :if={@tab == "deliberacoes"}>
+    <p class="text-sm text-base-content/50 mb-6">
+      Registre o resultado da votação de cada item deliberativo da pauta.
+    </p>
+
+    <div
+      :if={Enum.empty?(@meeting.agenda_items)}
+      class="py-12 text-center text-base-content/40 text-sm"
+    >
+      Adicione itens à pauta antes de registrar deliberações.
+    </div>
+
+    <div class="space-y-4">
+      <div
+        :for={
+          item <-
+            Enum.filter(@meeting.agenda_items, &(&1.item_type == "deliberative"))
+            |> Enum.sort_by(& &1.order)
+        }
+        class="card bg-base-100 border border-base-300"
+      >
+        <div class="card-body p-5">
+          <div class="flex items-start justify-between gap-3 mb-4">
+            <div>
+              <div class="flex items-center gap-2 mb-0.5">
+                <span class="text-xs text-base-content/40 font-mono">#{item.order}</span>
+                <span class="font-medium text-base-content">{item.title}</span>
+              </div>
+              <p :if={item.description} class="text-xs text-base-content/50">
+                {item.description}
+              </p>
+            </div>
+            <span
+              :if={item.resolution}
+              class={["badge badge-sm shrink-0", resolution_result_class(item.resolution.result)]}
+            >
+              {resolution_result_label(item.resolution.result)}
+            </span>
+          </div>
+
+          <%!-- Resultado já registrado --%>
+          <div :if={item.resolution} class="grid grid-cols-3 gap-3 text-center text-sm">
+            <div class="bg-success/10 rounded-lg py-2">
+              <div class="font-bold text-success">{item.resolution.votes_for}</div>
+              <div class="text-xs text-base-content/50">A favor</div>
+            </div>
+            <div class="bg-error/10 rounded-lg py-2">
+              <div class="font-bold text-error">{item.resolution.votes_against}</div>
+              <div class="text-xs text-base-content/50">Contra</div>
+            </div>
+            <div class="bg-base-200 rounded-lg py-2">
+              <div class="font-bold">{item.resolution.votes_abstain}</div>
+              <div class="text-xs text-base-content/50">Abstenções</div>
+            </div>
+          </div>
+
+          <%!-- Formulário para registrar --%>
+          <div :if={is_nil(item.resolution)}>
+            <.form
+              for={%{}}
+              id={"resolution-form-#{item.id}"}
+              phx-submit="save_resolution"
+              class="space-y-3"
+            >
+              <input type="hidden" name="resolution[agenda_item_id]" value={item.id} />
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div class="form-control">
+                  <label class="label py-0.5">
+                    <span class="label-text text-xs">Resultado</span>
+                  </label>
+                  <select
+                    name="resolution[result]"
+                    class="select select-bordered select-sm"
+                    required
+                  >
+                    <option value="approved">Aprovado</option>
+                    <option value="rejected">Rejeitado</option>
+                    <option value="tabled">Adiado</option>
+                    <option value="no_quorum">Sem quórum</option>
+                  </select>
+                </div>
+                <div class="form-control">
+                  <label class="label py-0.5">
+                    <span class="label-text text-xs">A favor</span>
+                  </label>
+                  <input
+                    type="number"
+                    name="resolution[votes_for]"
+                    value="0"
+                    min="0"
+                    class="input input-bordered input-sm"
+                  />
+                </div>
+                <div class="form-control">
+                  <label class="label py-0.5">
+                    <span class="label-text text-xs">Contra</span>
+                  </label>
+                  <input
+                    type="number"
+                    name="resolution[votes_against]"
+                    value="0"
+                    min="0"
+                    class="input input-bordered input-sm"
+                  />
+                </div>
+                <div class="form-control">
+                  <label class="label py-0.5">
+                    <span class="label-text text-xs">Abstenções</span>
+                  </label>
+                  <input
+                    type="number"
+                    name="resolution[votes_abstain]"
+                    value="0"
+                    min="0"
+                    class="input input-bordered input-sm"
+                  />
+                </div>
+              </div>
+              <div class="flex justify-end">
+                <button type="submit" class="btn btn-primary btn-xs">
+                  Registrar deliberação
+                </button>
+              </div>
+            </.form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%!-- ══════════════════ TAB: ATA ══════════════════ --%>
+  <div :if={@tab == "ata"}>
+    <div class="max-w-2xl space-y-6">
+      <%!-- Status do ciclo da ata --%>
+      <div class="steps steps-vertical sm:steps-horizontal w-full">
+        <div class={[
+          "step",
+          @meeting.status in ~w(held minutes_draft minutes_approved registered) && "step-primary"
+        ]}>
+          Realizada
+        </div>
+        <div class={[
+          "step",
+          @meeting.status in ~w(minutes_draft minutes_approved registered) && "step-primary"
+        ]}>
+          Rascunho
+        </div>
+        <div class={["step", @meeting.status in ~w(minutes_approved registered) && "step-primary"]}>
+          Aprovada
+        </div>
+        <div class={["step", @meeting.status == "registered" && "step-primary"]}>
+          Registrada
+        </div>
+      </div>
+
+      <%!-- Conteúdo da ata --%>
+      <div
+        :if={@meeting.status in ~w(minutes_draft minutes_approved registered)}
+        class="card bg-base-100 border border-base-300"
+      >
+        <div class="card-body p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold">Ata da {meeting_type_label(@meeting.type)}</h3>
+            <span class={["badge badge-sm", meeting_status_class(@meeting.status)]}>
+              {meeting_status_label(@meeting.status)}
+            </span>
+          </div>
+
+          <div class="prose prose-sm max-w-none text-base-content/70">
+            <p>
+              Aos <strong>{Calendar.strftime(@meeting.scheduled_at, "%d")}</strong>
+              dias do mês de <strong>{Calendar.strftime(@meeting.scheduled_at, "%B")}</strong>
+              de <strong>{Calendar.strftime(@meeting.scheduled_at, "%Y")}</strong>, {if @meeting.location do
+                "no(a) #{@meeting.location},"
+              else
+                ""
+              end} reuniram-se os condôminos para a <strong>{meeting_type_label(@meeting.type)} — {@meeting.title}</strong>.
+            </p>
+
+            <p :if={not Enum.empty?(@meeting.agenda_items)}>
+              <strong>Pauta:</strong>
+            </p>
+            <ol :if={not Enum.empty?(@meeting.agenda_items)}>
+              <li :for={item <- Enum.sort_by(@meeting.agenda_items, & &1.order)}>
+                {item.title}
+                {if item.resolution do
+                  "— #{resolution_result_label(item.resolution.result)} (#{item.resolution.votes_for} a favor, #{item.resolution.votes_against} contra, #{item.resolution.votes_abstain} abstenções)"
+                end}
+              </li>
+            </ol>
+
+            <p :if={@meeting.notes}>
+              <strong>Observações:</strong> {@meeting.notes}
+            </p>
+          </div>
+
+          <div :if={@meeting.status == "minutes_approved"} class="border-t border-base-300 pt-4">
+            <p class="text-xs text-base-content/40 text-center">
+              Ata aprovada pelos presentes. Aguardando registro em cartório.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <%!-- Estado: ainda não realizada --%>
+      <div
+        :if={@meeting.status in ~w(scheduled cancelled)}
+        class="py-12 text-center text-base-content/40 text-sm"
+      >
+        {if @meeting.status == "scheduled",
+          do: "A ata será gerada após a realização da assembleia.",
+          else: "Esta assembleia foi cancelada."}
+      </div>
+
+      <%!-- Estado: realizada, mas ata ainda não gerada --%>
+      <div :if={@meeting.status == "held"} class="py-12 text-center space-y-3">
+        <p class="text-base-content/50 text-sm">
+          Assembleia realizada. Avance o status para iniciar o rascunho da ata.
+        </p>
+        <button phx-click="advance_status" class="btn btn-primary btn-sm">
+          Gerar rascunho da ata
+        </button>
+      </div>
+    </div>
+  </div>
+</Layouts.private_app>
