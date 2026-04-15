@@ -1,0 +1,114 @@
+<%!-- PARA QUEM --%>
+<section class="py-14 px-5 md:py-24 md:px-6" id="para-quem" aria-labelledby="para-quem-heading">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-10 md:mb-14">
+      <div
+        class="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-1.5 mb-5 text-xs font-semibold uppercase tracking-widest"
+        aria-hidden="true"
+      >
+        Para quem é
+      </div>
+      <h2
+        id="para-quem-heading"
+        class="text-2xl sm:text-3xl md:text-4xl font-bold text-base-content mb-4"
+      >
+        Feito para quem leva gestão a sério.
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div class="card bg-base-100 border border-base-300">
+        <div class="card-body p-6 md:p-10 gap-5">
+          <div>
+            <div class="badge badge-primary badge-outline mb-3">
+              Administradoras de condomínios
+            </div>
+            <h3 class="text-xl md:text-2xl font-bold text-base-content mb-2">
+              Escale sem aumentar o time.
+            </h3>
+            <p class="text-base-content/60 leading-relaxed text-sm md:text-base">
+              Gerencie dezenas de condomínios a partir de um único painel. Padronize processos, elimine retrabalho e entregue mais valor para cada cliente.
+            </p>
+          </div>
+          <ul class="space-y-2.5" aria-label="Benefícios para administradoras">
+            <li
+              :for={
+                item <- [
+                  "Painel unificado para todos os condomínios da carteira",
+                  "Templates e processos padronizados entre condomínios",
+                  "Cadastro central de fornecedores com histórico de cotações",
+                  "Relatórios e prestação de contas automatizados"
+                ]
+              }
+              class="flex items-start gap-3"
+            >
+              <div
+                class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5"
+                aria-hidden="true"
+              >
+                <svg
+                  class="w-3 h-3 text-primary"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+              <span class="text-sm text-base-content/70">{item}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card bg-base-100 border border-base-300">
+        <div class="card-body p-6 md:p-10 gap-5">
+          <div>
+            <div class="badge badge-primary badge-outline mb-3">Síndicos profissionais</div>
+            <h3 class="text-xl md:text-2xl font-bold text-base-content mb-2">
+              De 5 a 30 prédios? A gente resolve.
+            </h3>
+            <p class="text-base-content/60 leading-relaxed text-sm md:text-base">
+              Troque os grupos de WhatsApp por comunicados rastreáveis, as planilhas por financeiro estruturado e o caderno por reservas digitais.
+            </p>
+          </div>
+          <ul class="space-y-2.5" aria-label="Benefícios para síndicos profissionais">
+            <li
+              :for={
+                item <- [
+                  "Tudo de cada prédio em um único lugar organizado",
+                  "Histórico completo de comunicados e ocorrências",
+                  "Moradores com acesso próprio para reservas e chamados",
+                  "Cotações fechadas em minutos, não em dias"
+                ]
+              }
+              class="flex items-start gap-3"
+            >
+              <div
+                class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5"
+                aria-hidden="true"
+              >
+                <svg
+                  class="w-3 h-3 text-primary"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+              <span class="text-sm text-base-content/70">{item}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
