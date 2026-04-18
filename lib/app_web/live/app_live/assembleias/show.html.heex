@@ -248,9 +248,46 @@
     <%!-- Lista de presentes --%>
     <div class="flex items-center justify-between mb-4">
       <h2 class="font-semibold text-base-content">Lista de presença</h2>
-      <button class="btn btn-outline btn-sm" disabled>
+      <button phx-click="open_attendance_form" class="btn btn-outline btn-sm">
         <.icon name="hero-plus" class="size-4" /> Registrar presença
       </button>
+    </div>
+
+    <%!-- Formulário inline: registrar presença --%>
+    <div :if={@attendance_form} class="card bg-base-200 border border-base-300 mb-4">
+      <div class="card-body p-4">
+        <h3 class="font-medium text-sm mb-3">Registrar presença</h3>
+        <.form
+          for={@attendance_form}
+          id="attendance-form"
+          phx-submit="save_attendance"
+          class="space-y-3"
+        >
+          <div class="form-control">
+            <label class="label py-0.5">
+              <span class="label-text text-sm">Unidade</span>
+            </label>
+            <select name="attendance[unit_id]" class="select select-bordered select-sm" required>
+              <option value="">Selecione a unidade...</option>
+              <option :for={unit <- @units} value={unit.id}>
+                {if unit.block, do: "Bloco #{unit.block} — ", else: ""}Unidade {unit.number}
+              </option>
+            </select>
+          </div>
+          <div class="flex justify-end gap-2">
+            <button type="button" phx-click="cancel_attendance_form" class="btn btn-ghost btn-xs">
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary btn-xs"
+              phx-disable-with="Registrando..."
+            >
+              Confirmar presença
+            </button>
+          </div>
+        </.form>
+      </div>
     </div>
 
     <div
@@ -309,11 +346,7 @@
 
     <div class="space-y-4">
       <div
-        :for={
-          item <-
-            Enum.filter(@meeting.agenda_items, &(&1.item_type == "deliberative"))
-            |> Enum.sort_by(& &1.order)
-        }
+        :for={item <- Enum.sort_by(@meeting.agenda_items, & &1.order)}
         class="card bg-base-100 border border-base-300"
       >
         <div class="card-body p-5">
@@ -322,6 +355,7 @@
               <div class="flex items-center gap-2 mb-0.5">
                 <span class="text-xs text-base-content/40 font-mono">#{item.order}</span>
                 <span class="font-medium text-base-content">{item.title}</span>
+                <span class="badge badge-ghost badge-xs">{item_type_label(item.item_type)}</span>
               </div>
               <p :if={item.description} class="text-xs text-base-content/50">
                 {item.description}
@@ -335,8 +369,16 @@
             </span>
           </div>
 
-          <%!-- Resultado já registrado --%>
-          <div :if={item.resolution} class="grid grid-cols-3 gap-3 text-center text-sm">
+          <%!-- Item informativo: sem votação --%>
+          <p :if={item.item_type == "informational"} class="text-xs text-base-content/40 italic">
+            Item informativo — sem votação registrável.
+          </p>
+
+          <%!-- Resultado já registrado (deliberativo) --%>
+          <div
+            :if={item.item_type == "deliberative" and item.resolution}
+            class="grid grid-cols-3 gap-3 text-center text-sm"
+          >
             <div class="bg-success/10 rounded-lg py-2">
               <div class="font-bold text-success">{item.resolution.votes_for}</div>
               <div class="text-xs text-base-content/50">A favor</div>
@@ -351,8 +393,8 @@
             </div>
           </div>
 
-          <%!-- Formulário para registrar --%>
-          <div :if={is_nil(item.resolution)}>
+          <%!-- Formulário para registrar (deliberativo sem resultado) --%>
+          <div :if={item.item_type == "deliberative" and is_nil(item.resolution)}>
             <.form
               for={%{}}
               id={"resolution-form-#{item.id}"}
@@ -495,6 +537,81 @@
             <p class="text-xs text-base-content/40 text-center">
               Ata aprovada pelos presentes. Aguardando registro em cartório.
             </p>
+          </div>
+
+          <%!-- Upload do documento de cartório --%>
+          <div :if={@meeting.status == "minutes_approved"} class="border-t border-base-300 pt-4">
+            <h4 class="text-sm font-medium mb-2">Anexar documento de cartório</h4>
+            <.form
+              for={%{}}
+              phx-submit="upload_cartorio_doc"
+              phx-change="noop"
+              class="flex items-center gap-3"
+            >
+              <.live_file_input
+                upload={@uploads.cartorio_doc}
+                class="file-input file-input-bordered file-input-sm flex-1"
+              />
+              <button type="submit" class="btn btn-primary btn-sm" phx-disable-with="Enviando...">
+                <.icon name="hero-arrow-up-tray" class="size-4" /> Enviar
+              </button>
+            </.form>
+            <p class="text-xs text-base-content/40 mt-1">PDF, máx. 20 MB.</p>
+          </div>
+
+          <%!-- Link para documento de cartório (quando registrada) --%>
+          <div :if={@meeting.registered_document_url} class="border-t border-base-300 pt-4">
+            <a
+              href={@meeting.registered_document_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline btn-sm"
+            >
+              <.icon name="hero-document-arrow-down" class="size-4" /> Documento de cartório
+            </a>
+          </div>
+
+          <%!-- Resumo AI em PDF --%>
+          <div
+            :if={@meeting.status in ~w(minutes_approved registered)}
+            class="border-t border-base-300 pt-4"
+          >
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <h4 class="text-sm font-medium">Resumo executivo (PDF)</h4>
+                <p class="text-xs text-base-content/40 mt-0.5">
+                  Gerado por IA. Regenerado automaticamente apenas se a ata for alterada.
+                </p>
+              </div>
+              <div class="flex items-center gap-2 shrink-0">
+                <a
+                  :if={@meeting.summary_pdf_url}
+                  href={@meeting.summary_pdf_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline btn-sm"
+                >
+                  <.icon name="hero-arrow-down-tray" class="size-4" /> Baixar PDF
+                </a>
+                <button
+                  :if={not @summary_generating}
+                  phx-click="generate_summary"
+                  class="btn btn-primary btn-sm"
+                  data-confirm={
+                    if @meeting.summary_pdf_url,
+                      do: "Regenerar o resumo? O anterior será substituído.",
+                      else: nil
+                  }
+                >
+                  <.icon name="hero-sparkles" class="size-4" />
+                  {if @meeting.summary_pdf_url, do: "Regenerar", else: "Gerar resumo"}
+                </button>
+                <span
+                  :if={@summary_generating}
+                  class="loading loading-spinner loading-sm text-primary"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

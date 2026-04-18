@@ -33,15 +33,15 @@ defmodule AppWeb.UserLive.Registration do
     case Condo.register_org_with_user(params) do
       {:ok, %{user: user}} ->
         {:ok, _} =
-          Accounts.deliver_login_instructions(
+          Accounts.deliver_confirmation_instructions(
             user,
-            &url(~p"/users/log-in/#{&1}")
+            &url(~p"/users/confirm/#{&1}")
           )
 
         socket
         |> put_flash(
           :info,
-          "Conta criada! Enviamos um link de acesso para #{user.email}."
+          "Conta criada! Enviamos um link de confirmação para #{user.email}."
         )
         |> push_navigate(to: ~p"/users/log-in")
         |> noreply()
@@ -49,8 +49,10 @@ defmodule AppWeb.UserLive.Registration do
       {:error, :org, changeset, _} ->
         {:noreply, assign_form(socket, changeset)}
 
-      {:error, :user, changeset, _} ->
-        {:noreply, assign_form(socket, adapt_user_errors(changeset))}
+      {:error, :user, _changeset, _} ->
+        socket
+        |> put_flash(:error, "Erro ao criar usuário. Verifique os dados e tente novamente.")
+        |> noreply()
 
       {:error, _step, _changeset, _} ->
         socket
@@ -61,15 +63,6 @@ defmodule AppWeb.UserLive.Registration do
 
   defp assign_form(socket, changeset) do
     assign(socket, :form, to_form(changeset, as: "registration"))
-  end
-
-  # Mapeia erros de e-mail único do User changeset para o form de registro
-  defp adapt_user_errors(%Ecto.Changeset{errors: errors} = cs) do
-    if Keyword.has_key?(errors, :email) do
-      cs
-    else
-      Ecto.Changeset.add_error(cs, :email, "já existe uma conta com esse e-mail")
-    end
   end
 
   @impl true
@@ -170,6 +163,28 @@ defmodule AppWeb.UserLive.Registration do
               autocomplete="username"
               spellcheck="false"
               phx-mounted={JS.focus()}
+              phx-debounce="blur"
+            />
+
+            <%!-- Senha --%>
+            <.input
+              field={@form[:password]}
+              type="password"
+              label="Senha"
+              placeholder="Mínimo 12 caracteres"
+              required
+              autocomplete="new-password"
+              phx-debounce="blur"
+            />
+
+            <%!-- Confirmação de senha --%>
+            <.input
+              field={@form[:password_confirmation]}
+              type="password"
+              label="Confirmar senha"
+              placeholder="Repita a senha"
+              required
+              autocomplete="new-password"
               phx-debounce="blur"
             />
 

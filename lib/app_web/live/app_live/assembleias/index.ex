@@ -31,7 +31,7 @@ defmodule AppWeb.AppLive.Assembleias.Index do
     socket
     |> assign(:page_title, "Nova Assembleia")
     |> assign(:meeting, %Meeting{})
-    |> assign(:form, to_form(Assembly.change_meeting(%Meeting{})))
+    |> assign(:form, to_form(Assembly.change_meeting()))
   end
 
   defp apply_action(socket, :index, _params) do
@@ -65,8 +65,7 @@ defmodule AppWeb.AppLive.Assembleias.Index do
 
   def handle_event("validate", %{"meeting" => params}, socket) do
     changeset =
-      socket.assigns.meeting
-      |> Assembly.change_meeting(params)
+      Assembly.change_meeting(socket.assigns.meeting, params)
       |> Map.put(:action, :validate)
 
     socket |> assign(:form, to_form(changeset)) |> noreply()

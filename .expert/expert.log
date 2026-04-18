@@ -29914,3 +29914,287 @@ Start Call: XPGenLSP.Buffer.start_link([name: XPExpert.Buffer])
 Restart: :permanent
 Shutdown: 5000
 Type: :worker
+
+16:20:24.092 instance_id=19D97BCC50E [info] Expert v0.1.0 starting on stdio
+
+16:20:24.104 instance_id=19D97BCC50E [info] Starting NodePortMapper on nonode@nohost
+
+16:20:24.106 instance_id=19D97BCC50E [info] Child XPForge.NodePortMapper of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.162.0>
+Start Call: XPForge.NodePortMapper.start_link([])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+16:20:24.109 instance_id=19D97BCC50E [info] Child XPForge.Document.Store of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.163.0>
+Start Call: XPForge.Document.Store.start_link([derive: [analysis: &XPForge.Ast.analyze/1]])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+16:20:24.109 instance_id=19D97BCC50E [info] Child XPExpert.ProjectSupervisor of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.164.0>
+Start Call: DynamicSupervisor.start_link([name: XPExpert.ProjectSupervisor, strategy: :one_for_one])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+
+16:20:24.109 instance_id=19D97BCC50E [info] Child XPExpert.DynamicSupervisor of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.165.0>
+Start Call: DynamicSupervisor.start_link([name: XPExpert.DynamicSupervisor])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+
+16:20:24.113 instance_id=19D97BCC50E [info] Child XPGenLSP.Assigns of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.166.0>
+Start Call: XPGenLSP.Assigns.start_link([name: XPExpert.Assigns])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+16:20:24.113 instance_id=19D97BCC50E [info] Child :expert_task_queue of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.167.0>
+Start Call: Task.Supervisor.start_link([name: :expert_task_queue])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+
+16:20:24.115 instance_id=19D97BCC50E [info] Child XPGenLSP.Buffer of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.168.0>
+Start Call: XPGenLSP.Buffer.start_link([name: XPExpert.Buffer])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+16:20:24.115 instance_id=19D97BCC50E [info] Child XPExpert.ActiveProjects of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.169.0>
+Start Call: XPExpert.ActiveProjects.start_link()
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+16:20:24.115 instance_id=19D97BCC50E [debug] [name: XPExpert, buffer: XPExpert.Buffer, task_supervisor: :expert_task_queue, dynamic_supervisor: XPExpert.DynamicSupervisor, assigns: XPExpert.Assigns]
+
+16:20:24.124 instance_id=19D97BCC50E [info] Child XPExpert of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.170.0>
+Start Call: XPExpert.start_link([name: XPExpert, buffer: XPExpert.Buffer, task_supervisor: :expert_task_queue, dynamic_supervisor: XPExpert.DynamicSupervisor, assigns: XPExpert.Assigns])
+Restart: :permanent
+Shutdown: 500
+Type: :worker
+
+16:20:24.124 instance_id=19D97BCC50E [info] Application xp_expert started at :nonode@nohost
+
+19:00:46.655 instance_id=19D984F992F [info] Expert v0.1.0 starting on stdio
+
+19:00:46.668 instance_id=19D984F992F [info] Starting NodePortMapper on nonode@nohost
+
+19:00:46.671 instance_id=19D984F992F [info] Child XPForge.NodePortMapper of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.162.0>
+Start Call: XPForge.NodePortMapper.start_link([])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+19:00:46.673 instance_id=19D984F992F [info] Child XPForge.Document.Store of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.163.0>
+Start Call: XPForge.Document.Store.start_link([derive: [analysis: &XPForge.Ast.analyze/1]])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+19:00:46.673 instance_id=19D984F992F [info] Child XPExpert.ProjectSupervisor of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.164.0>
+Start Call: DynamicSupervisor.start_link([name: XPExpert.ProjectSupervisor, strategy: :one_for_one])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+
+19:00:46.673 instance_id=19D984F992F [info] Child XPExpert.DynamicSupervisor of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.165.0>
+Start Call: DynamicSupervisor.start_link([name: XPExpert.DynamicSupervisor])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+
+19:00:46.676 instance_id=19D984F992F [info] Child XPGenLSP.Assigns of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.166.0>
+Start Call: XPGenLSP.Assigns.start_link([name: XPExpert.Assigns])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+19:00:46.676 instance_id=19D984F992F [info] Child :expert_task_queue of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.167.0>
+Start Call: Task.Supervisor.start_link([name: :expert_task_queue])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+
+19:00:46.677 instance_id=19D984F992F [info] Child XPGenLSP.Buffer of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.168.0>
+Start Call: XPGenLSP.Buffer.start_link([name: XPExpert.Buffer])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+19:00:46.678 instance_id=19D984F992F [info] Child XPExpert.ActiveProjects of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.169.0>
+Start Call: XPExpert.ActiveProjects.start_link()
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+19:00:46.678 instance_id=19D984F992F [debug] [name: XPExpert, buffer: XPExpert.Buffer, task_supervisor: :expert_task_queue, dynamic_supervisor: XPExpert.DynamicSupervisor, assigns: XPExpert.Assigns]
+
+19:00:46.687 instance_id=19D984F992F [info] Child XPExpert of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.170.0>
+Start Call: XPExpert.start_link([name: XPExpert, buffer: XPExpert.Buffer, task_supervisor: :expert_task_queue, dynamic_supervisor: XPExpert.DynamicSupervisor, assigns: XPExpert.Assigns])
+Restart: :permanent
+Shutdown: 500
+Type: :worker
+
+19:00:46.688 instance_id=19D984F992F [info] Application xp_expert started at :nonode@nohost
+
+11:26:43.914 instance_id=19DA0FCA043 [info] Expert v0.1.0 starting on stdio
+
+11:26:43.919 instance_id=19DA0FCA043 [info] Starting NodePortMapper on nonode@nohost
+
+11:26:43.921 instance_id=19DA0FCA043 [info] Child XPForge.NodePortMapper of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.162.0>
+Start Call: XPForge.NodePortMapper.start_link([])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+11:26:43.922 instance_id=19DA0FCA043 [info] Child XPForge.Document.Store of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.163.0>
+Start Call: XPForge.Document.Store.start_link([derive: [analysis: &XPForge.Ast.analyze/1]])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+11:26:43.922 instance_id=19DA0FCA043 [info] Child XPExpert.ProjectSupervisor of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.164.0>
+Start Call: DynamicSupervisor.start_link([name: XPExpert.ProjectSupervisor, strategy: :one_for_one])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+
+11:26:43.922 instance_id=19DA0FCA043 [info] Child XPExpert.DynamicSupervisor of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.165.0>
+Start Call: DynamicSupervisor.start_link([name: XPExpert.DynamicSupervisor])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+
+11:26:43.923 instance_id=19DA0FCA043 [info] Child XPGenLSP.Assigns of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.166.0>
+Start Call: XPGenLSP.Assigns.start_link([name: XPExpert.Assigns])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+11:26:43.923 instance_id=19DA0FCA043 [info] Child :expert_task_queue of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.167.0>
+Start Call: Task.Supervisor.start_link([name: :expert_task_queue])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+
+11:26:43.924 instance_id=19DA0FCA043 [info] Child XPGenLSP.Buffer of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.168.0>
+Start Call: XPGenLSP.Buffer.start_link([name: XPExpert.Buffer])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+11:26:43.924 instance_id=19DA0FCA043 [info] Child XPExpert.ActiveProjects of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.169.0>
+Start Call: XPExpert.ActiveProjects.start_link()
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+11:26:43.924 instance_id=19DA0FCA043 [debug] [name: XPExpert, buffer: XPExpert.Buffer, task_supervisor: :expert_task_queue, dynamic_supervisor: XPExpert.DynamicSupervisor, assigns: XPExpert.Assigns]
+
+11:26:43.928 instance_id=19DA0FCA043 [info] Child XPExpert of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.170.0>
+Start Call: XPExpert.start_link([name: XPExpert, buffer: XPExpert.Buffer, task_supervisor: :expert_task_queue, dynamic_supervisor: XPExpert.DynamicSupervisor, assigns: XPExpert.Assigns])
+Restart: :permanent
+Shutdown: 500
+Type: :worker
+
+11:26:43.928 instance_id=19DA0FCA043 [info] Application xp_expert started at :nonode@nohost
+
+14:54:41.430 instance_id=19DA1BB0490 [info] Expert v0.1.0 starting on stdio
+
+14:54:41.435 instance_id=19DA1BB0490 [info] Starting NodePortMapper on nonode@nohost
+
+14:54:41.437 instance_id=19DA1BB0490 [info] Child XPForge.NodePortMapper of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.162.0>
+Start Call: XPForge.NodePortMapper.start_link([])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+14:54:41.438 instance_id=19DA1BB0490 [info] Child XPForge.Document.Store of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.163.0>
+Start Call: XPForge.Document.Store.start_link([derive: [analysis: &XPForge.Ast.analyze/1]])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+14:54:41.438 instance_id=19DA1BB0490 [info] Child XPExpert.ProjectSupervisor of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.164.0>
+Start Call: DynamicSupervisor.start_link([name: XPExpert.ProjectSupervisor, strategy: :one_for_one])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+
+14:54:41.438 instance_id=19DA1BB0490 [info] Child XPExpert.DynamicSupervisor of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.165.0>
+Start Call: DynamicSupervisor.start_link([name: XPExpert.DynamicSupervisor])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+
+14:54:41.439 instance_id=19DA1BB0490 [info] Child XPGenLSP.Assigns of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.166.0>
+Start Call: XPGenLSP.Assigns.start_link([name: XPExpert.Assigns])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+14:54:41.439 instance_id=19DA1BB0490 [info] Child :expert_task_queue of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.167.0>
+Start Call: Task.Supervisor.start_link([name: :expert_task_queue])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+
+14:54:41.439 instance_id=19DA1BB0490 [info] Child XPGenLSP.Buffer of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.168.0>
+Start Call: XPGenLSP.Buffer.start_link([name: XPExpert.Buffer])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+14:54:41.439 instance_id=19DA1BB0490 [info] Child XPExpert.ActiveProjects of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.169.0>
+Start Call: XPExpert.ActiveProjects.start_link()
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+
+14:54:41.439 instance_id=19DA1BB0490 [debug] [name: XPExpert, buffer: XPExpert.Buffer, task_supervisor: :expert_task_queue, dynamic_supervisor: XPExpert.DynamicSupervisor, assigns: XPExpert.Assigns]
+
+14:54:41.442 instance_id=19DA1BB0490 [info] Child XPExpert of Supervisor XPExpert.Supervisor started
+Pid: #PID<0.170.0>
+Start Call: XPExpert.start_link([name: XPExpert, buffer: XPExpert.Buffer, task_supervisor: :expert_task_queue, dynamic_supervisor: XPExpert.DynamicSupervisor, assigns: XPExpert.Assigns])
+Restart: :permanent
+Shutdown: 500
+Type: :worker
+
+14:54:41.442 instance_id=19DA1BB0490 [info] Application xp_expert started at :nonode@nohost

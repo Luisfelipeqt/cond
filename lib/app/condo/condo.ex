@@ -1,6 +1,7 @@
 defmodule App.Condo.Condo do
   use App.Schema
   import Ecto.Changeset
+  import App.Utils
 
   @schema_prefix "condo"
   schema "condominiums" do
@@ -28,7 +29,11 @@ defmodule App.Condo.Condo do
     timestamps(type: :utc_datetime)
   end
 
-  def changeset(condo, attrs) do
+  def changeset(attrs) do
+    changeset(%__MODULE__{}, attrs)
+  end
+
+  def changeset(%__MODULE__{} = condo, attrs) do
     condo
     |> cast(attrs, [
       :org_id,
@@ -43,8 +48,19 @@ defmodule App.Condo.Condo do
       :state,
       :zip_code
     ])
-    |> validate_required([:org_id, :name])
+    |> validate_required([:name], message: "obrigatório")
+    |> validate_length(:name, min: 3, max: 120, message: "mínimo 3 caracteres")
+    |> validate_number(:total_units, greater_than: 0, message: "deve ser maior que zero")
+    |> update_change(:name, &normalize/1)
+    |> update_change(:city, &normalize/1)
+    |> update_change(:neighborhood, &normalize/1)
+    |> update_change(:street, &normalize/1)
+    |> update_change(:state, &upcase_state/1)
+    |> update_change(:zip_code, &only_numbers/1)
     |> unique_constraint(:cnpj)
     |> foreign_key_constraint(:org_id)
   end
+
+  defp upcase_state(nil), do: nil
+  defp upcase_state(s), do: s |> String.trim() |> String.upcase()
 end

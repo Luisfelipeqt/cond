@@ -37,7 +37,12 @@ defmodule App.Condo do
       })
     )
     |> Ecto.Multi.insert(:user, fn _ ->
-      User.email_changeset(%User{}, %{email: attrs["email"]})
+      %User{}
+      |> User.changeset(%{email: attrs["email"]})
+      |> User.password_changeset(%{
+        password: attrs["password"],
+        password_confirmation: attrs["password_confirmation"]
+      })
     end)
     |> Ecto.Multi.insert(:org_member, fn %{org: org, user: user} ->
       OrgMember.changeset(%OrgMember{}, %{
@@ -51,11 +56,17 @@ defmodule App.Condo do
 
   @doc "Changeset sem struct para validação do formulário de registro."
   def change_registration(attrs \\ %{}) do
-    types = %{org_name: :string, org_type: :string, email: :string}
+    types = %{
+      org_name: :string,
+      org_type: :string,
+      email: :string,
+      password: :string,
+      password_confirmation: :string
+    }
 
     {%{}, types}
     |> Ecto.Changeset.cast(attrs, Map.keys(types))
-    |> Ecto.Changeset.validate_required([:org_name, :org_type, :email],
+    |> Ecto.Changeset.validate_required([:org_name, :org_type, :email, :password],
       message: "obrigatório"
     )
     |> Ecto.Changeset.validate_inclusion(:org_type, Organization.types())
@@ -63,6 +74,8 @@ defmodule App.Condo do
       message: "formato inválido"
     )
     |> Ecto.Changeset.validate_length(:org_name, min: 2, max: 120)
+    |> Ecto.Changeset.validate_length(:password, min: 12, max: 72, message: "mínimo de 12 caracteres")
+    |> Ecto.Changeset.validate_confirmation(:password, message: "as senhas não conferem")
   end
 
   # ---------------------------------------------------------------------------
@@ -138,8 +151,11 @@ defmodule App.Condo do
     |> Ecto.Multi.run(:user, fn _repo, _ ->
       case App.Accounts.get_user_by_email(email) do
         nil ->
+          random_password = Base.encode64(:crypto.strong_rand_bytes(32))
+
           %User{}
-          |> User.email_changeset(%{email: email})
+          |> User.changeset(%{email: email})
+          |> User.password_changeset(%{password: random_password, password_confirmation: random_password})
           |> Repo.insert()
 
         user ->
@@ -243,8 +259,44 @@ defmodule App.Condo do
     end
   end
 
+  @doc "Lista todas as unidades de um condomínio, ordenadas por bloco e número."
+  def list_units_for_condo(condo_id) do
+    App.Condo.Unit
+    |> where([u], u.condo_id == ^condo_id)
+    |> order_by([u], [u.block, u.number])
+    |> Repo.all()
+  end
+
+  @doc "Busca uma unidade pelo id, levantando exceção se não encontrada."
+  def get_unit!(id), do: Repo.get!(App.Condo.Unit, id)
+
+  @doc "Cria uma unidade em um condomínio."
+  def create_unit(attrs) do
+    %App.Condo.Unit{}
+    |> App.Condo.Unit.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc "Atualiza uma unidade."
+  def update_unit(%App.Condo.Unit{} = unit, attrs) do
+    unit
+    |> App.Condo.Unit.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc "Remove uma unidade."
+  def delete_unit(%App.Condo.Unit{} = unit), do: Repo.delete(unit)
+
+  @doc "Retorna um changeset para forms de unidade."
+  def change_unit(attrs \\ %{}), do: App.Condo.Unit.changeset(%App.Condo.Unit{}, attrs)
+  def change_unit(%App.Condo.Unit{} = unit, attrs), do: App.Condo.Unit.changeset(unit, attrs)
+
   @doc "Retorna um changeset para forms de criação/edição de condomínio."
-  def change_condo(%Condo{} = condo \\ %Condo{}, attrs \\ %{}) do
+  def change_condo(attrs \\ %{}) do
+    Condo.changeset(attrs)
+  end
+
+  def change_condo(%Condo{} = condo, attrs) do
     Condo.changeset(condo, attrs)
   end
 

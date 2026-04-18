@@ -14,6 +14,8 @@ erl_crash.dump
 .elixir_ls/
 .expert
 .claude
+.idea
+.expert
 ### Elixir Patch ###
 
 ### Intellij ###
@@ -290,3 +292,8 @@ replay_pid*
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/java,elixir,intellij+all,intellij,intellij+iml,visualstudiocode
+
+# Variáveis de ambiente locais (segredos, credenciais)
+.env
+.env.*
+!.env.example

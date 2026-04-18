@@ -1,0 +1,194 @@
+<Layouts.private_app flash={@flash} current_scope={@current_scope} condo={@condo}>
+  <%!-- Page header --%>
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+    <div>
+      <h1 class="text-2xl font-bold text-base-content">Unidades</h1>
+      <p class="text-sm text-base-content/50 mt-1">
+        Gerencie as unidades do condomínio. Cada unidade pode ser vinculada a moradores e presenças em assembleias.
+      </p>
+    </div>
+    <.link
+      patch={~p"/condominios/#{@condo.id}/unidades/nova"}
+      class="btn btn-primary btn-sm shrink-0"
+    >
+      <.icon name="hero-plus" class="size-4" /> Nova unidade
+    </.link>
+  </div>
+
+  <%!-- Empty state --%>
+  <%= if Enum.empty?(@units) do %>
+    <div class="flex flex-col items-center justify-center py-24 text-center">
+      <div class="w-16 h-16 rounded-2xl bg-base-200 flex items-center justify-center mb-4">
+        <.icon name="hero-home" class="size-8 text-base-content/30" />
+      </div>
+      <h3 class="text-base font-semibold text-base-content mb-1">Nenhuma unidade cadastrada</h3>
+      <p class="text-sm text-base-content/50 max-w-xs mb-6">
+        Cadastre as unidades para registrar presenças em assembleias e vincular moradores.
+      </p>
+      <.link patch={~p"/condominios/#{@condo.id}/unidades/nova"} class="btn btn-primary btn-sm">
+        <.icon name="hero-plus" class="size-4" /> Nova unidade
+      </.link>
+    </div>
+  <% else %>
+    <%!-- Summary --%>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+      <div class="stat bg-base-200 rounded-xl p-4">
+        <div class="stat-title text-xs">Total</div>
+        <div class="stat-value text-2xl">{length(@units)}</div>
+      </div>
+      <div class="stat bg-base-200 rounded-xl p-4">
+        <div class="stat-title text-xs">Apartamentos</div>
+        <div class="stat-value text-2xl">
+          {Enum.count(@units, &(&1.type == "apartment"))}
+        </div>
+      </div>
+      <div class="stat bg-base-200 rounded-xl p-4">
+        <div class="stat-title text-xs">Comerciais</div>
+        <div class="stat-value text-2xl">
+          {Enum.count(@units, &(&1.type == "commercial"))}
+        </div>
+      </div>
+      <div class="stat bg-base-200 rounded-xl p-4">
+        <div class="stat-title text-xs">Estacionamentos</div>
+        <div class="stat-value text-2xl">
+          {Enum.count(@units, &(&1.type == "parking"))}
+        </div>
+      </div>
+    </div>
+
+    <%!-- Table --%>
+    <div class="overflow-x-auto rounded-xl border border-base-300">
+      <table class="table table-sm">
+        <thead>
+          <tr class="text-xs text-base-content/50 uppercase tracking-wide">
+            <th>Bloco</th>
+            <th>Número</th>
+            <th>Tipo</th>
+            <th>Fração ideal</th>
+            <th class="text-right">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr :for={unit <- @units} class="hover">
+            <td class="font-mono text-sm text-base-content/60">
+              {unit.block || "—"}
+            </td>
+            <td class="font-medium">{unit.number}</td>
+            <td>
+              <span class="badge badge-ghost badge-sm">{unit_type_label(unit.type)}</span>
+            </td>
+            <td class="text-sm text-base-content/60 font-mono">
+              {if unit.fraction, do: unit.fraction, else: "—"}
+            </td>
+            <td class="text-right">
+              <div class="flex items-center justify-end gap-1">
+                <.link
+                  patch={~p"/condominios/#{@condo.id}/unidades/#{unit.id}/editar"}
+                  class="btn btn-ghost btn-xs"
+                >
+                  Editar
+                </.link>
+                <button
+                  phx-click="delete"
+                  phx-value-id={unit.id}
+                  data-confirm="Remover esta unidade? Esta ação não pode ser desfeita."
+                  class="btn btn-ghost btn-xs text-error"
+                >
+                  <.icon name="hero-trash" class="size-3.5" />
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</Layouts.private_app>
+
+<%!-- Modal: Nova / Editar Unidade --%>
+<dialog
+  :if={@live_action in [:new, :edit]}
+  id="unit-modal"
+  class="modal modal-open"
+  open
+>
+  <div class="modal-box max-w-md">
+    <div class="flex items-center justify-between mb-5">
+      <h3 class="text-lg font-bold">
+        {if @live_action == :new, do: "Nova Unidade", else: "Editar Unidade"}
+      </h3>
+      <button phx-click="cancel" class="btn btn-ghost btn-sm btn-square">
+        <.icon name="hero-x-mark" class="size-5" />
+      </button>
+    </div>
+
+    <.form
+      for={@form}
+      id="unit-form"
+      phx-change="validate"
+      phx-submit="save"
+      class="space-y-4"
+    >
+      <div class="grid grid-cols-2 gap-4">
+        <.input
+          field={@form[:number]}
+          type="text"
+          label="Número"
+          placeholder="101"
+          required
+          phx-debounce="blur"
+        />
+        <.input
+          field={@form[:block]}
+          type="text"
+          label="Bloco"
+          placeholder="A"
+          phx-debounce="blur"
+        />
+      </div>
+
+      <.input
+        field={@form[:type]}
+        type="select"
+        label="Tipo"
+        options={[
+          {"Apartamento", "apartment"},
+          {"Casa", "house"},
+          {"Comercial", "commercial"},
+          {"Estacionamento", "parking"}
+        ]}
+        required
+      />
+
+      <.input
+        field={@form[:fraction]}
+        type="number"
+        label="Fração ideal"
+        placeholder="0.03125"
+        step="0.000001"
+        min="0"
+        max="1"
+        phx-debounce="blur"
+      />
+      <p class="text-xs text-base-content/40 -mt-2">
+        Participação proporcional no condomínio (0.0 a 1.0). A soma de todas as unidades deve ser 1.0.
+      </p>
+
+      <div class="modal-action mt-2">
+        <button type="button" phx-click="cancel" class="btn btn-ghost btn-sm">
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary btn-sm"
+          phx-disable-with="Salvando..."
+        >
+          {if @live_action == :new, do: "Criar unidade", else: "Salvar alterações"}
+        </button>
+      </div>
+    </.form>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button phx-click="cancel">Fechar</button>
+  </form>
+</dialog>

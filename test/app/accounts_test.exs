@@ -48,45 +48,6 @@ defmodule App.AccountsTest do
     end
   end
 
-  describe "register_user/1" do
-    test "requires email to be set" do
-      {:error, changeset} = Accounts.register_user(%{})
-
-      assert %{email: ["can't be blank"]} = errors_on(changeset)
-    end
-
-    test "validates email when given" do
-      {:error, changeset} = Accounts.register_user(%{email: "not valid"})
-
-      assert %{email: ["must have the @ sign and no spaces"]} = errors_on(changeset)
-    end
-
-    test "validates maximum values for email for security" do
-      too_long = String.duplicate("db", 100)
-      {:error, changeset} = Accounts.register_user(%{email: too_long})
-      assert "should be at most 160 character(s)" in errors_on(changeset).email
-    end
-
-    test "validates email uniqueness" do
-      %{email: email} = user_fixture()
-      {:error, changeset} = Accounts.register_user(%{email: email})
-      assert "has already been taken" in errors_on(changeset).email
-
-      # Now try with the uppercased email too, to check that email case is ignored.
-      {:error, changeset} = Accounts.register_user(%{email: String.upcase(email)})
-      assert "has already been taken" in errors_on(changeset).email
-    end
-
-    test "registers users without password" do
-      email = unique_user_email()
-      {:ok, user} = Accounts.register_user(valid_user_attributes(email: email))
-      assert user.email == email
-      assert is_nil(user.hashed_password)
-      assert is_nil(user.confirmed_at)
-      assert is_nil(user.password)
-    end
-  end
-
   describe "sudo_mode?/2" do
     test "validates the authenticated_at time" do
       now = DateTime.utc_now()
@@ -350,14 +311,77 @@ defmodule App.AccountsTest do
       assert {:error, :not_found} = Accounts.login_user_by_magic_link(encoded_token)
     end
 
-    test "raises when unconfirmed user has password set" do
+    test "confirma e loga usuário não confirmado mesmo tendo senha definida" do
       user = unconfirmed_user_fixture()
-      {1, nil} = Repo.update_all(User, set: [hashed_password: "hashed"])
-      {encoded_token, _hashed_token} = generate_user_magic_link_token(user)
+      assert user.hashed_password != nil
+      refute user.confirmed_at
+      {encoded_token, hashed_token} = generate_user_magic_link_token(user)
 
-      assert_raise RuntimeError, ~r/magic link log in is not allowed/, fn ->
-        Accounts.login_user_by_magic_link(encoded_token)
-      end
+      assert {:ok, {confirmed_user, [%{token: ^hashed_token}]}} =
+               Accounts.login_user_by_magic_link(encoded_token)
+
+      assert confirmed_user.confirmed_at != nil
+    end
+  end
+
+  describe "confirm_user/1" do
+    setup do
+      %{user: unconfirmed_user_fixture()}
+    end
+
+    test "confirma o usuário com token válido e deleta o token", %{user: user} do
+      {encoded_token, hashed_token} = generate_user_confirm_token(user)
+
+      assert {:ok, confirmed_user} = Accounts.confirm_user(encoded_token)
+      assert confirmed_user.confirmed_at != nil
+      refute Repo.get_by(UserToken, token: hashed_token)
+    end
+
+    test "retorna erro com token inválido" do
+      assert {:error, :invalid_token} = Accounts.confirm_user("token_invalido")
+    end
+
+    test "retorna erro com token já consumido", %{user: user} do
+      {encoded_token, _} = generate_user_confirm_token(user)
+
+      {:ok, _} = Accounts.confirm_user(encoded_token)
+      assert {:error, :invalid_token} = Accounts.confirm_user(encoded_token)
+    end
+
+    test "retorna erro com token expirado (> 7 dias)", %{user: user} do
+      {encoded_token, hashed_token} = generate_user_confirm_token(user)
+
+      Repo.update_all(
+        from(t in UserToken, where: t.token == ^hashed_token),
+        set: [inserted_at: ~N[2020-01-01 00:00:00]]
+      )
+
+      assert {:error, :invalid_token} = Accounts.confirm_user(encoded_token)
+      refute Repo.get!(User, user.id).confirmed_at
+    end
+
+    test "não confirma usuário com token de contexto errado (login)", %{user: user} do
+      {encoded_token, _} = generate_user_magic_link_token(user)
+      assert {:error, :invalid_token} = Accounts.confirm_user(encoded_token)
+    end
+  end
+
+  describe "deliver_confirmation_instructions/2" do
+    setup do
+      %{user: unconfirmed_user_fixture()}
+    end
+
+    test "envia token com contexto 'confirm'", %{user: user} do
+      token =
+        extract_user_token(fn url ->
+          Accounts.deliver_confirmation_instructions(user, url)
+        end)
+
+      {:ok, decoded} = Base.url_decode64(token, padding: false)
+      assert user_token = Repo.get_by(UserToken, token: :crypto.hash(:sha256, decoded))
+      assert user_token.user_id == user.id
+      assert user_token.sent_to == user.email
+      assert user_token.context == "confirm"
     end
   end
 

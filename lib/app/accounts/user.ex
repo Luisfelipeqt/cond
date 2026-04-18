@@ -14,9 +14,9 @@ defmodule App.Accounts.User do
   end
 
   @doc """
-  A user changeset for registering or changing the email.
+  Changeset de email — usado para criar ou alterar o email do usuário.
 
-  It requires the email to change otherwise an error is added.
+  Requer que o email mude quando aplicado sobre um usuário existente.
 
   ## Options
 
@@ -24,7 +24,7 @@ defmodule App.Accounts.User do
       uniqueness of the email, useful when displaying live validations.
       Defaults to `true`.
   """
-  def email_changeset(user, attrs, opts \\ []) do
+  def changeset(user, attrs, opts \\ []) do
     user
     |> cast(attrs, [:email])
     |> validate_email(opts)
@@ -119,8 +119,8 @@ defmodule App.Accounts.User do
   If there is no user or the user doesn't have a password, we call
   `Argon2.no_user_verify/0` to avoid timing attacks.
   """
-  def valid_password?(%App.Accounts.User{hashed_password: hashed_password}, password)
-      when is_binary(hashed_password) and byte_size(password) > 0 do
+  def valid_password?(%App.Accounts.User{hashed_password: "$argon2" <> _ = hashed_password}, password)
+      when byte_size(password) > 0 do
     Argon2.verify_pass(password, hashed_password)
   end
 

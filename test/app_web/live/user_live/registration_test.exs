@@ -8,8 +8,8 @@ defmodule AppWeb.UserLive.RegistrationTest do
     test "renders registration page", %{conn: conn} do
       {:ok, _lv, html} = live(conn, ~p"/users/register")
 
-      assert html =~ "Register"
-      assert html =~ "Log in"
+      assert html =~ "Criar"
+      assert html =~ "Entrar"
     end
 
     test "redirects if already logged in", %{conn: conn} do
@@ -17,7 +17,7 @@ defmodule AppWeb.UserLive.RegistrationTest do
         conn
         |> log_in_user(user_fixture())
         |> live(~p"/users/register")
-        |> follow_redirect(conn, ~p"/")
+        |> follow_redirect(conn, ~p"/condominios")
 
       assert {:ok, _conn} = result
     end
@@ -28,55 +28,69 @@ defmodule AppWeb.UserLive.RegistrationTest do
       result =
         lv
         |> element("#registration_form")
-        |> render_change(user: %{"email" => "with spaces"})
+        |> render_change(registration: %{"email" => "with spaces"})
 
-      assert result =~ "Register"
-      assert result =~ "must have the @ sign and no spaces"
+      assert result =~ "formato inválido"
     end
   end
 
   describe "register user" do
-    test "creates account but does not log in", %{conn: conn} do
+    test "creates account, envia email de confirmação e não loga", %{conn: conn} do
       {:ok, lv, _html} = live(conn, ~p"/users/register")
 
       email = unique_user_email()
-      form = form(lv, "#registration_form", user: valid_user_attributes(email: email))
+
+      form =
+        form(lv, "#registration_form",
+          registration: %{
+            "org_type" => "professional_syndic",
+            "org_name" => "Org Teste",
+            "email" => email,
+            "password" => valid_user_password(),
+            "password_confirmation" => valid_user_password()
+          }
+        )
 
       {:ok, _lv, html} =
         render_submit(form)
         |> follow_redirect(conn, ~p"/users/log-in")
 
-      assert html =~
-               ~r/An email was sent to .*, please access it to confirm your account/
+      assert html =~ "Enviamos um link de confirmação"
     end
 
-    test "renders errors for duplicated email", %{conn: conn} do
+    test "renders flash error for duplicated email", %{conn: conn} do
       {:ok, lv, _html} = live(conn, ~p"/users/register")
 
-      user = user_fixture(%{email: "test@email.com"})
+      user = user_fixture()
 
-      result =
+      html =
         lv
         |> form("#registration_form",
-          user: %{"email" => user.email}
+          registration: %{
+            "org_type" => "professional_syndic",
+            "org_name" => "Org Teste",
+            "email" => user.email,
+            "password" => valid_user_password(),
+            "password_confirmation" => valid_user_password()
+          }
         )
         |> render_submit()
 
-      assert result =~ "has already been taken"
+      assert html =~ "Erro ao criar" or html =~ "Verifique os dados"
     end
   end
 
   describe "registration navigation" do
-    test "redirects to login page when the Log in button is clicked", %{conn: conn} do
+    test "redirects to login page when the Entrar link is clicked", %{conn: conn} do
       {:ok, lv, _html} = live(conn, ~p"/users/register")
 
       {:ok, _login_live, login_html} =
         lv
-        |> element("main a", "Log in")
+        |> element("a[href='/users/log-in']")
         |> render_click()
         |> follow_redirect(conn, ~p"/users/log-in")
 
-      assert login_html =~ "Log in"
+      assert login_html =~ "Entrar"
     end
   end
 end

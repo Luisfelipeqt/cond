@@ -130,6 +130,7 @@
         label="Título"
         placeholder="1ª Assembleia Geral Ordinária de 2026"
         required
+        phx-debounce="blur"
       />
 
       <div class="grid grid-cols-2 gap-4">
@@ -165,12 +166,14 @@
           type="datetime-local"
           label="Data e hora"
           required
+          phx-debounce="blur"
         />
         <.input
           field={@form[:second_call_minutes]}
           type="number"
           label="2ª convocação (min)"
           placeholder="30"
+          phx-debounce="blur"
         />
       </div>
 
@@ -179,6 +182,7 @@
         type="text"
         label="Local"
         placeholder="Salão de festas, Rua X, 123"
+        phx-debounce="blur"
       />
 
       <.input
@@ -187,6 +191,7 @@
         label="Texto da convocação"
         placeholder="Ficam convocados todos os condôminos para..."
         rows={4}
+        phx-debounce="blur"
       />
 
       <div class="modal-action mt-2">

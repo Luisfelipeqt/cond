@@ -140,6 +140,11 @@ defmodule AppWeb.Layouts do
                 disabled
               />
               <.private_nav_item
+                icon="hero-home"
+                label="Unidades"
+                href={~p"/condominios/#{@condo.id}/unidades"}
+              />
+              <.private_nav_item
                 icon="hero-document-text"
                 label="Assembleias & Atas"
                 href={~p"/condominios/#{@condo.id}/assembleias"}

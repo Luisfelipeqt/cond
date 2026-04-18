@@ -1,6 +1,7 @@
 defmodule App.Assembly.Meeting do
   use App.Schema
   import Ecto.Changeset
+  import App.Utils
 
   @schema_prefix "assembly"
 
@@ -20,6 +21,10 @@ defmodule App.Assembly.Meeting do
     field :notice_sent_at, :utc_datetime
     field :convocation_text, :string
     field :notes, :string
+    field :registered_document_url, :string
+    field :summary_pdf_url, :string
+    field :summary_content_hash, :string
+    field :summary_generated_at, :utc_datetime
 
     belongs_to :condo, App.Condo.Condo
     belongs_to :created_by, App.Accounts.User
@@ -31,7 +36,11 @@ defmodule App.Assembly.Meeting do
     timestamps(type: :utc_datetime)
   end
 
-  def changeset(meeting, attrs) do
+  def changeset(attrs) do
+    changeset(%__MODULE__{}, attrs)
+  end
+
+  def changeset(%__MODULE__{} = meeting, attrs) do
     meeting
     |> cast(attrs, [
       :condo_id,
@@ -46,13 +55,27 @@ defmodule App.Assembly.Meeting do
       :quorum_type,
       :notice_sent_at,
       :convocation_text,
-      :notes
+      :notes,
+      :registered_document_url,
+      :summary_pdf_url,
+      :summary_content_hash,
+      :summary_generated_at
     ])
-    |> validate_required([:condo_id, :created_by_id, :title, :type, :scheduled_at])
-    |> validate_inclusion(:type, @types)
-    |> validate_inclusion(:status, @statuses)
-    |> validate_inclusion(:quorum_type, @quorum_types)
-    |> validate_number(:second_call_minutes, greater_than_or_equal_to: 0)
+    |> validate_required([:condo_id, :created_by_id, :title, :type, :scheduled_at],
+      message: "obrigatório"
+    )
+    |> validate_inclusion(:type, @types, message: "tipo inválido")
+    |> validate_inclusion(:status, @statuses, message: "status inválido")
+    |> validate_inclusion(:quorum_type, @quorum_types, message: "tipo de quórum inválido")
+    |> validate_length(:title, min: 4, max: 200, message: "mínimo 4 caracteres")
+    |> validate_number(:second_call_minutes,
+      greater_than_or_equal_to: 0,
+      message: "deve ser zero ou maior"
+    )
+    |> update_change(:title, &normalize/1)
+    |> update_change(:location, &normalize/1)
+    |> update_change(:convocation_text, &String.trim/1)
+    |> update_change(:notes, &String.trim/1)
     |> foreign_key_constraint(:condo_id)
     |> foreign_key_constraint(:created_by_id)
   end

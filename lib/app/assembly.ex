@@ -30,12 +30,14 @@ defmodule App.Assembly do
 
   @doc "Busca uma reunião pelo id, levantando exceção se não encontrada."
   def get_meeting!(id) do
+    agenda_items_query = from a in AgendaItem, order_by: [asc: a.order]
+
     Meeting
     |> Repo.get!(id)
     |> Repo.preload([
       :condo,
       :created_by,
-      agenda_items: :resolution,
+      agenda_items: {agenda_items_query, :resolution},
       attendances: [:unit, :user],
       proxies: [:grantor_unit, :grantor_user, :grantee_user]
     ])
@@ -63,8 +65,60 @@ defmodule App.Assembly do
   end
 
   @doc "Retorna um changeset para forms de criação/edição de reunião."
-  def change_meeting(%Meeting{} = meeting \\ %Meeting{}, attrs \\ %{}) do
+  def change_meeting(attrs \\ %{}) do
+    Meeting.changeset(attrs)
+  end
+
+  def change_meeting(%Meeting{} = meeting, attrs) do
     Meeting.changeset(meeting, attrs)
+  end
+
+  @doc "Salva a URL do documento de cartório na reunião."
+  def attach_document(%Meeting{} = meeting, url) do
+    meeting
+    |> Meeting.changeset(%{registered_document_url: url})
+    |> Repo.update()
+  end
+
+  @doc "Salva URL do PDF resumido e hash de conteúdo após geração via AI."
+  def save_summary(%Meeting{} = meeting, pdf_url, content_hash) do
+    meeting
+    |> Meeting.changeset(%{
+      summary_pdf_url: pdf_url,
+      summary_content_hash: content_hash,
+      summary_generated_at: DateTime.utc_now() |> DateTime.truncate(:second)
+    })
+    |> Repo.update()
+  end
+
+  @doc "SHA-256 do conteúdo relevante da ata — usado para cache do resumo AI."
+  def content_hash(%Meeting{} = meeting) do
+    data =
+      Jason.encode!(%{
+        title: meeting.title,
+        notes: meeting.notes,
+        location: meeting.location,
+        agenda_items:
+          Enum.map(meeting.agenda_items, fn item ->
+            %{
+              title: item.title,
+              description: item.description,
+              status: item.status,
+              resolution:
+                if item.resolution do
+                  %{
+                    result: item.resolution.result,
+                    votes_for: item.resolution.votes_for,
+                    votes_against: item.resolution.votes_against,
+                    votes_abstain: item.resolution.votes_abstain
+                  }
+                end
+            }
+          end),
+        attendances_count: length(meeting.attendances)
+      })
+
+    :crypto.hash(:sha256, data) |> Base.encode16(case: :lower)
   end
 
   # ---------------------------------------------------------------------------

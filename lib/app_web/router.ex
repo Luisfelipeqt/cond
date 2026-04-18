@@ -61,23 +61,38 @@ defmodule AppWeb.Router do
   scope "/", AppWeb do
     pipe_through [:browser, :require_authenticated_user]
 
-    # Autenticado mas sem exigir onboarding completo
+    # Autenticado mas sem exigir confirmação (settings pode ser acessado antes de confirmar)
     live_session :require_authenticated_user,
       on_mount: [{AppWeb.UserAuth, :require_authenticated}] do
-      live "/onboarding", OnboardingLive.Index, :index
+      live "/users/confirmar-email", UserLive.PendingConfirmation, :new
       live "/users/settings", UserLive.Settings, :edit
       live "/users/settings/confirm-email/:token", UserLive.Settings, :confirm_email
     end
 
-    # Autenticado + onboarding concluído
+    # Autenticado + email confirmado → onboarding
+    live_session :require_confirmed_user,
+      on_mount: [
+        {AppWeb.UserAuth, :require_authenticated},
+        {AppWeb.UserAuth, :require_confirmed}
+      ] do
+      live "/onboarding", OnboardingLive.Index, :index
+    end
+
+    # Autenticado + confirmado + onboarding concluído
     live_session :require_onboarded,
       on_mount: [
         {AppWeb.UserAuth, :require_authenticated},
+        {AppWeb.UserAuth, :require_confirmed},
         {AppWeb.UserAuth, :require_onboarding}
       ] do
       # Condomínios
       live "/condominios", AppLive.Condominios.Index, :index
       live "/condominios/novo", AppLive.Condominios.Index, :new
+
+      # Unidades do condomínio
+      live "/condominios/:condo_id/unidades", AppLive.Unidades.Index, :index
+      live "/condominios/:condo_id/unidades/nova", AppLive.Unidades.Index, :new
+      live "/condominios/:condo_id/unidades/:id/editar", AppLive.Unidades.Index, :edit
 
       # Assembleias & Atas (aninhadas sob condomínio)
       live "/condominios/:condo_id/assembleias", AppLive.Assembleias.Index, :index
@@ -99,6 +114,7 @@ defmodule AppWeb.Router do
       live "/users/register", UserLive.Registration, :new
       live "/users/log-in", UserLive.Login, :new
       live "/users/log-in/:token", UserLive.Confirmation, :new
+      live "/users/confirm/:token", UserLive.EmailConfirmation, :new
     end
 
     post "/users/log-in", UserSessionController, :create

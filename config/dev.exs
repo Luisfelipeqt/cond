@@ -92,3 +92,14 @@ config :phoenix_live_view,
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+# Em dev usa o mailbox local (visível em /dev/mailbox)
+config :app, App.Mailer, adapter: Swoosh.Adapters.Local
+
+config :ex_aws,
+  access_key_id: System.get_env("AWS_ACCESS_KEY_ID", "dev"),
+  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY", "dev"),
+  region: System.get_env("AWS_REGION", "us-east-1")
+
+config :app, :s3_bucket, System.get_env("S3_BUCKET_NAME", "sindico-dev")
+config :app, :anthropic_api_key, System.get_env("ANTHROPIC_API_KEY", "")

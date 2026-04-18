@@ -8,9 +8,9 @@ defmodule AppWeb.UserLive.LoginTest do
     test "renders login page", %{conn: conn} do
       {:ok, _lv, html} = live(conn, ~p"/users/log-in")
 
-      assert html =~ "Log in"
-      assert html =~ "Register"
-      assert html =~ "Log in with email"
+      assert html =~ "Entrar na sua conta"
+      assert html =~ "Cadastre-se"
+      assert html =~ "Entrar com link no email"
     end
   end
 
@@ -56,7 +56,7 @@ defmodule AppWeb.UserLive.LoginTest do
 
       conn = submit_form(form, conn)
 
-      assert redirected_to(conn) == ~p"/"
+      assert redirected_to(conn) == ~p"/condominios"
     end
 
     test "redirects to login page with a flash error if credentials are invalid", %{
@@ -76,16 +76,16 @@ defmodule AppWeb.UserLive.LoginTest do
   end
 
   describe "login navigation" do
-    test "redirects to registration page when the Register button is clicked", %{conn: conn} do
+    test "redirects to registration page when the Cadastre-se link is clicked", %{conn: conn} do
       {:ok, lv, _html} = live(conn, ~p"/users/log-in")
 
       {:ok, _login_live, login_html} =
         lv
-        |> element("main a", "Sign up")
+        |> element("a", "Cadastre-se")
         |> render_click()
         |> follow_redirect(conn, ~p"/users/register")
 
-      assert login_html =~ "Register"
+      assert login_html =~ "Criar"
     end
   end
 
@@ -98,9 +98,9 @@ defmodule AppWeb.UserLive.LoginTest do
     test "shows login page with email filled in", %{conn: conn, user: user} do
       {:ok, _lv, html} = live(conn, ~p"/users/log-in")
 
-      assert html =~ "You need to reauthenticate"
-      refute html =~ "Register"
-      assert html =~ "Log in with email"
+      assert html =~ "Confirme sua identidade para continuar"
+      refute html =~ "Cadastre-se"
+      assert html =~ "Entrar com link no email"
 
       assert html =~
                ~s(<input type="email" name="user[email]" id="login_form_magic_email" value="#{user.email}")

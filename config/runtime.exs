@@ -56,6 +56,19 @@ if config_env() == :prod do
 
   config :app, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
 
+  config :ex_aws,
+    access_key_id:
+      System.get_env("AWS_ACCESS_KEY_ID") || raise("environment variable AWS_ACCESS_KEY_ID is missing"),
+    secret_access_key:
+      System.get_env("AWS_SECRET_ACCESS_KEY") || raise("environment variable AWS_SECRET_ACCESS_KEY is missing"),
+    region: System.get_env("AWS_REGION", "us-east-1")
+
+  config :app,
+    s3_bucket:
+      System.get_env("S3_BUCKET_NAME") || raise("environment variable S3_BUCKET_NAME is missing"),
+    anthropic_api_key:
+      System.get_env("ANTHROPIC_API_KEY") || raise("environment variable ANTHROPIC_API_KEY is missing")
+
   config :app, AppWeb.Endpoint,
     url: [host: host, port: 443, scheme: "https"],
     http: [

@@ -72,7 +72,12 @@ defmodule App.MixProject do
       {:timex, "~> 3.7"},
       {:oban, "~> 2.20"},
       {:money, "~> 1.13"},
-      {:brcpfcnpj, "~> 2.0"}
+      {:brcpfcnpj, "~> 2.0"},
+      # Storage S3
+      {:ex_aws, "~> 2.5"},
+      {:ex_aws_s3, "~> 2.5"},
+      {:hackney, "~> 1.20"},
+      {:sweet_xml, "~> 0.7"}
     ]
   end
 

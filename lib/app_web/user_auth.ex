@@ -230,6 +230,22 @@ defmodule AppWeb.UserAuth do
     end
   end
 
+  def on_mount(:require_confirmed, _params, session, socket) do
+    socket = mount_current_scope(socket, session)
+    user = socket.assigns.current_scope && socket.assigns.current_scope.user
+
+    if user && user.confirmed_at do
+      {:cont, socket}
+    else
+      socket =
+        socket
+        |> Phoenix.LiveView.put_flash(:info, "Confirme seu e-mail para continuar.")
+        |> Phoenix.LiveView.redirect(to: ~p"/users/confirmar-email")
+
+      {:halt, socket}
+    end
+  end
+
   def on_mount(:require_onboarding, _params, session, socket) do
     socket = mount_current_scope(socket, session)
 
